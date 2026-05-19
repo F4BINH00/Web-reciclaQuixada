@@ -491,3 +491,35 @@ body {
         top: 110px;
     }
 }
+
+/* Rodapé */
+.footer {
+    margin-top: 90px;
+    padding: 35px 24px 20px;
+    border-top: 3px solid #4b5563;
+    background-color: #f8faf8;
+    text-align: center;
+}
+
+.footer-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    color: #16823a;
+    margin-bottom: 16px;
+}
+
+.footer-logo i {
+    font-size: 44px;
+}
+
+.footer-logo h3 {
+    font-size: 28px;
+}
+
+.footer-info p {
+    font-size: 14px;
+    color: #4b5563;
+    margin: 3px 0;
+}
