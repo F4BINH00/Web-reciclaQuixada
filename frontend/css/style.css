@@ -9,3 +9,88 @@ body {
     background-color: #f8faf8;
     color: #1f2937;
 }
+
+.sidebar {
+    width: 260px;
+    height: 100vh;
+    background-color: #ffffff;
+    border-right: 1px solid #e5e7eb;
+    padding: 28px 22px;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #16823a;
+    margin-bottom: 40px;
+}
+
+.logo i {
+    font-size: 42px;
+}
+
+.logo h1 {
+    font-size: 30px;
+    line-height: 28px;
+}
+
+.logo span {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #374151;
+    padding: 14px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-weight: 500;
+}
+
+.menu a i {
+    font-size: 20px;
+}
+
+.menu a:hover,
+.menu a.active {
+    background-color: #eaf7ed;
+    color: #16823a;
+}
+
+.sidebar-card {
+    background-color: #eaf7ed;
+    margin-top: 70px;
+    padding: 22px;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.sidebar-card i {
+    font-size: 46px;
+    color: #16823a;
+}   
+
+.sidebar-card h3 {
+    color: #14532d;
+    margin: 12px 0;
+    font-size: 18px;
+}
+
+.sidebar-card p {
+    color: #4b5563;
+    font-size: 14px;
+}
