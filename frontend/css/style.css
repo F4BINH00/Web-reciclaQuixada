@@ -285,7 +285,7 @@ body {
     font-size: 14px;
 }
 
-/* Parte inferior */
+/* Mapa fictício e área inferior */
 .content-grid {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
@@ -378,3 +378,64 @@ body {
     color: #16823a;
     font-size: 14px;
 }
+
+/* Painéis laterais informativos */
+.right-panels {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}   
+
+.collect-box {
+    margin-top: 18px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.date {
+    width: 78px;
+    height: 78px;
+    background-color: #eaf7ed;
+    border-left: 6px solid #16823a;
+    border-radius: 10px;
+    color: #14532d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.date strong {
+    font-size: 30px;
+}
+
+.collect-box h4 {
+    margin-bottom: 6px;
+}
+
+.collect-box p {
+    color: #4b5563;
+    font-size: 14px;
+}
+
+.material {
+    display: grid;
+    grid-template-columns: 80px 1fr 40px;
+    gap: 12px;
+    align-items: center;
+    margin: 18px 0;
+}
+
+.progress {
+    height: 8px;
+    background-color: #e5e7eb;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress div {
+    height: 100%;
+    background-color: #34d399;
+    border-radius: 20px;
+}   
