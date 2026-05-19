@@ -284,3 +284,97 @@ body {
     color: #4b5563;
     font-size: 14px;
 }
+
+/* Parte inferior */
+.content-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 22px;
+}
+
+.panel {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.panel-header a {
+    color: #16823a;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.fake-map {
+    height: 320px;
+    background-color: #f3f4f6;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    background-image:
+        linear-gradient(45deg, #e5e7eb 25%, transparent 25%),
+        linear-gradient(-45deg, #e5e7eb 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #e5e7eb 75%),
+        linear-gradient(-45deg, transparent 75%, #e5e7eb 75%);
+    background-size: 70px 70px;
+}
+
+.pin {
+    position: absolute;
+    background-color: white;
+    color: #16823a;
+    padding: 9px;
+    border-radius: 50%;
+    font-size: 24px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+}
+
+.pin-1 {
+    top: 50px;
+    left: 90px;
+}
+
+.pin-2 {
+    top: 170px;
+    left: 170px;
+}
+
+.pin-3 {
+    top: 80px;
+    right: 130px;
+}
+
+.map-card {
+    position: absolute;
+    left: 250px;
+    top: 125px;
+    background-color: white;
+    border-radius: 14px;
+    padding: 18px;
+    width: 270px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+}
+
+.map-card h4 {
+    margin-bottom: 6px;
+}
+
+.map-card p,
+.map-card small {
+    display: block;
+    color: #4b5563;
+    margin-bottom: 8px;
+}
+
+.map-card strong {
+    color: #16823a;
+    font-size: 14px;
+}
