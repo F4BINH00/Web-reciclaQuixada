@@ -224,3 +224,63 @@ body {
     font-size: 120px;
     color: #16823a;
 }
+
+/* Cards */
+.cards {
+    margin: 24px 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.card {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+
+.card-icon {
+    min-width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 28px;
+}
+
+.green {
+    background-color: #39b54a;
+}
+
+.blue {
+    background-color: #3aaee0;
+}
+
+.yellow {
+    background-color: #facc15;
+}
+
+.purple {
+    background-color: #8b5cf6;
+}
+
+.card p {
+    color: #6b7280;
+    margin-bottom: 4px;
+}   
+ 
+.card h3 {
+    font-size: 28px;  
+}
+
+.card span {
+    color: #4b5563;
+    font-size: 14px;
+}
