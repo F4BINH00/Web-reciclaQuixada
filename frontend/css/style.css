@@ -214,7 +214,7 @@ body {
     width: 230px; 
     height: 230px;    
     border-radius: 50%;   
-    background-color: rgba(2  55, 255, 255, 0.45);
+    background-color: rgba(255, 255, 255, 0.45);
     display: flex;    
     align-items: center;  
     justify-content: center;  
@@ -913,78 +913,4 @@ body {
     display: flex;
     gap: 10px;
     align-items: center;
-}
-
-/* Tela de Pontos de Coleta */
-.page-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-bottom: 24px;
-    margin-bottom: 28px;
-    border-bottom: 1px solid #e5e7eb;
-}
-
-.page-header h2 {
-    font-size: 28px;
-    color: #111827;
-    margin-bottom: 8px;
-}
-
-.page-header p {
-    color: #4b5563;
-}
-
-.filters {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 22px;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.map-search {
-    width: 340px;
-}
-
-.filter-button {
-    border: 1px solid #e5e7eb;
-    background: #ffffff;
-    padding: 13px 18px;
-    border-radius: 10px;
-    font-weight: 600;
-    color: #374151;
-    cursor: pointer;
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    transition: 0.2s ease;
-}
-
-.filter-button:hover {
-    background-color: #eaf7ed;
-    border-color: #16823a;
-    color: #16823a;
-}
-
-.filter-button:hover i {
-    color: #16823a;
-}
-
-.active-filter {
-    border-color: #16823a;
-    color: #16823a;
-}
-
-.plastic,
-.paper {
-    color: #2563eb;
-}
-
-.plastic-green {
-    color: #16823a;
-}
-
-.metal {
-    color: #4b5563;
 }
