@@ -673,3 +673,119 @@ body {
     background: #16823a;
     color: white;
 }
+
+/* Marcadores e localização do mapa */
+
+.street {
+    position: absolute;
+    color: #6b7280;
+    font-size: 12px;
+    font-weight: 600;
+    opacity: 0.75;
+}
+
+.street-1 {
+    top: 60px;
+    left: 360px;
+    transform: rotate(-35deg);
+}
+
+.street-2 {
+    top: 255px;
+    left: 300px;
+    transform: rotate(-28deg);
+}
+
+.street-3 {
+    top: 270px;
+    left: 400px;
+}
+
+.street-4 {
+    bottom: 120px;
+    left: 160px;
+    color: #2563eb;
+}
+
+.map-location {
+    position: absolute;
+    left: 430px;
+    top: 330px;
+    width: 120px;
+    height: 120px;
+    background: rgba(59, 130, 246, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1d4ed8;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.map-location div {
+    width: 26px;
+    height: 26px;
+    background: #2563eb;
+    border: 4px solid white;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 35px;
+}
+
+.map-pin {
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    z-index: 3;
+}
+
+.map-pin i {
+    transform: rotate(45deg);
+    font-size: 18px;
+}
+
+.green-pin {
+    background: #16823a;
+}
+
+.blue-pin {
+    background: #2563eb;
+}
+
+.pin-a {
+    top: 80px;
+    left: 520px;
+}
+
+.pin-b {
+    top: 230px;
+    left: 430px;
+}
+
+.pin-c {
+    top: 330px;
+    left: 250px;
+}
+
+.pin-d {
+    bottom: 160px;
+    right: 180px;
+}
+
+.pin-e {
+    top: 170px;
+    left: 280px;
+}
+
+.pin-f {
+    bottom: 110px;
+    left: 430px;
+}
