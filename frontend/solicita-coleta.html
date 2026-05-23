@@ -79,7 +79,68 @@
         </section>
 
         <section class="request-grid">
+            <div class="panel request-form-card">
+                <h3>Dados da Coleta</h3>
 
+                <form class="request-form">
+                    <div class="form-group">
+                        <label for="material">Tipo de Material</label>
+                        <select id="material">
+                              <option>Selecione</option>
+                              <option>Plástico</option>
+                              <option>Papel</option>
+                              <option>Vidro</option>
+                              <option>Metal</option>
+                              <option>Eletrônicos</option>
+                        </select>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="quantidade">Quantidade Estimada</label>
+                        <select id="quantidade">
+                          <option>Pequena</option>
+                          <option>Média</option>
+                          <option>Grande</option>
+                        </select>
+                    </div>
+                
+                 
+                <div class="form-group">
+                    <label for="endereco">Endereço</label>
+                    <input type="text" id="endereco" placeholder="Digite seu endereço">
+                </div>
+                
+                 <div class="form-group">
+                    <label for="bairro">Bairro</label>
+                    <input type="text" id="bairro" placeholder="Digite seu bairro">
+                  </div>
+                
+                 <div class="form-row">
+                    <div class="form-group">
+                      <label for="data">Data da Coleta</label>
+                      <input type="date" id="data">
+                    </div>
+                  
+                   <div class="form-group">
+                      <label for="horario">Horário Preferido</label>
+                      <input type="time" id="horario">
+                    </div>
+                  </div>
+                
+                 <div class="form-group">
+                    <label for="observacoes">Observações</label>
+                    <textarea id="observacoes" placeholder="Informações adicionais..."></textarea>
+                  </div>
+                
+                 <div class="form-buttons">
+                    <button type="reset" class="btn-secondary">Cancelar</button>
+                    <button type="submit" class="btn-primary">
+                      <i class="bi bi-truck"></i>
+                      Solicitar Coleta
+                    </button>
+                  </div>
+                </form>
+                <div>
         </section>
     </main>
 
