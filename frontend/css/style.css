@@ -1257,3 +1257,27 @@ body {
         justify-content: center;
     }
 }
+
+/* Tela de cadastro */
+.container {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    background-color: #f8faf8;
+}
+
+.left-side {
+    background: linear-gradient(135deg, #eaf7ed, #dff5e6);
+    padding: 46px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.right-side {
+    padding: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8faf8;
+}
