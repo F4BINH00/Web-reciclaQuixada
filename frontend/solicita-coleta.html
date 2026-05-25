@@ -82,7 +82,7 @@
             <div class="panel request-form-card">
                 <h3>Dados da Coleta</h3>
 
-                <form class="request-form">
+                <form id="form-solicitacao" class="request-form">
                     <div class="form-group">
                         <label for="material">Tipo de Material</label>
                         <select id="material">
@@ -133,7 +133,7 @@
                   </div>
                 
                  <div class="form-buttons">
-                    <button type="reset" class="btn-secondary">Cancelar</button>
+                    <button type="button" id="btn-cancelar" class="btn-secondary">Cancelar</button>
                     <button type="submit" class="btn-primary">
                       <i class="bi bi-truck"></i>
                       Solicitar Coleta
@@ -190,6 +190,6 @@
                 </div>
             </footer>
     </main>
-
+<script src="js/solicita-coleta.js"></script>
 </body>
 </html>
