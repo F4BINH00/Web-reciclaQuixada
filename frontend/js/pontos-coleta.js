@@ -121,3 +121,23 @@ campoBusca.addEventListener("keydown", function (event) {
     buscarLocalNoMapa();
   }
 });
+
+const botaoMinhaLocalizacao = document.getElementById("btn-minha-localizacao");
+
+botaoMinhaLocalizacao.addEventListener("click", function () {
+  mapa.locate({
+    setView: true,
+    maxZoom: 16
+  });
+});
+
+mapa.on("locationfound", function (event) {
+  L.marker(event.latlng)
+    .addTo(mapa)
+    .bindPopup("Você está aproximadamente aqui.")
+    .openPopup();
+});
+
+mapa.on("locationerror", function () {
+  alert("Não foi possível acessar sua localização. Verifique a permissão do navegador.");
+});
