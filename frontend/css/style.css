@@ -1492,3 +1492,31 @@ body {
         font-size: 32px;
     }
 }
+
+/* Lista de resíduos da educação ambiental */
+.education-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.education-item {
+    background-color: #f8faf8;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 18px;
+}
+
+.education-item h4 {
+    color: #16823a;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.education-item p {
+    color: #4b5563;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
