@@ -163,6 +163,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 32px;
+    overflow: hidden;
 }
 
 .hero h2 {
@@ -209,7 +211,7 @@ body {
     border: 1px solid #16823a;
     color: #16823a;
 }
-
+/*não tem mais icone, já que é imgagem
 .hero-icon {
     width: 230px; 
     height: 230px;    
@@ -223,8 +225,22 @@ body {
 .hero-icon i {
     font-size: 120px;
     color: #16823a;
+}*/
+.hero-image {
+    flex: 1.2;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
+.hero-image img {
+    width: 100%;
+    max-width: 720px;
+    height: 260px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 18px;
+}
 /* Cards */
 .cards {
     margin: 24px 0;
@@ -285,7 +301,7 @@ body {
     font-size: 14px;
 }
 
-/* Mapa fictício e área inferior */
+/* Mapa fictício (agora é mapa real) e área inferior */
 .content-grid {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
@@ -313,6 +329,14 @@ body {
     text-decoration: none;
 }
 
+/* Mapa real da dashboard */
+.dashboard-map {
+    height: 320px;
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+}
 .fake-map {
     height: 320px;
     background-color: #f3f4f6;
@@ -1065,7 +1089,7 @@ body {
 
 /* Tela de solicitação de coleta */
 .request-hero {
-    min-height: 220px;
+    min-height: 300px;
     background: linear-gradient(90deg, #eaf7ed, #dff5e6);
     border-radius: 18px;
     padding: 42px;
@@ -1073,21 +1097,27 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 28px;
+    gap: 32px;
+    overflow: hidden;
 }
 
 .request-hero h2 {
     font-size: 42px;
     color: #064e3b;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
+    line-height: 1.1;
 }
-
+.request-hero h2 span {
+    color: #16823a;
+    font-weight: 800;
+}
 .request-hero p {
     max-width: 560px;
-    color: #4b5563;
-    font-size: 18px;
-    line-height: 1.5;
+    color: #334155;
+    font-size: 19px;
+    line-height: 1.6;
 }
-
+/* nao existe mais icone, agora é imagem
 .request-hero-icon {
     width: 140px;
     height: 140px;
@@ -1102,7 +1132,26 @@ body {
     font-size: 76px;
     color: #16823a;
 }
+*/
+.request-hero-image {
+    flex: 1.7;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.request-hero-content {
+    flex: 1;
+}
 
+.request-hero-image img {
+    width: 100%;
+    max-width: 980px;
+    height: 330px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 18px;
+    display: block;
+}
 .request-grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
