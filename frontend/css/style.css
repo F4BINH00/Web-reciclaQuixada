@@ -1564,28 +1564,83 @@ body {
 .education-list {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 18px;
 }
 
 .education-item {
-    background-color: #f8faf8;
+    display: grid;
+    grid-template-columns: 170px 1fr;
+    gap: 18px;
+    align-items: center;
+    background-color: #ffffff;
     border: 1px solid #e5e7eb;
-    border-radius: 12px;
-    padding: 18px;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
 }
 
-.education-item h4 {
-    color: #16823a;
-    margin-bottom: 10px;
+.education-image {
+    width: 170px;
+    height: 130px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 14px;
+    background-color: #f0fdf4;
+    border: 1px solid #e5e7eb;
+}
+
+.education-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.education-title {
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-.education-item p {
-    color: #4b5563;
-    margin-bottom: 8px;
+.education-title i {
+    color: #16823a;
+    font-size: 20px;
+}
+
+.education-title h4 {
+    color: #064e3b;
+    font-size: 20px;
+    margin: 0;
+}
+
+.education-category {
+    width: fit-content;
+    background-color: #ecfdf5;
+    color: #16823a;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 999px;
+}
+
+.education-content p {
+    color: #475569;
     line-height: 1.5;
+    margin: 0;
+}
+
+.education-tip {
+    background-color: #f8fafc;
+    border-left: 4px solid #16823a;
+    border-radius: 10px;
+    padding: 10px 12px;
+}
+
+.education-tip strong {
+    color: #064e3b;
+}
+
+.education-tip p {
+    margin-top: 4px;
 }
 .card-voce-sabia {
     display: flex;
@@ -1618,17 +1673,18 @@ body {
     color: #22c55e;
     font-size: 26px;
 }
-
 .imagem-voce-sabia {
     width: 100%;
     max-width: 100%;
-    max-height: 700px;
+    max-height: 720px;
     object-fit: contain;
+    object-position: center;
     display: block;
-    margin: 0 auto 18px;
+    margin: 0 auto 14px;
     border-radius: 14px;
+    border: 1px solid #e5e7eb;
     background-color: #f0fdf4;
-    padding: 10px;
+    padding: 8px;
 }
 
 .card-voce-sabia p {
