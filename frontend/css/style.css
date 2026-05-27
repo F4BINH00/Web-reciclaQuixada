@@ -1587,3 +1587,96 @@ body {
     margin-bottom: 8px;
     line-height: 1.5;
 }
+.card-voce-sabia {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.card-voce-sabia h3 {
+    color: #16823a;
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+.card-voce-sabia h3::after {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 4px;
+    background-color: #22c55e;
+    border-radius: 999px;
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+}
+.card-voce-sabia h3 i {
+    color: #22c55e;
+    font-size: 26px;
+}
+
+.imagem-voce-sabia {
+    width: 100%;
+    max-width: 100%;
+    max-height: 700px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 18px;
+    border-radius: 14px;
+    background-color: #f0fdf4;
+    padding: 10px;
+}
+
+.card-voce-sabia p {
+    color: #475569;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.dicas-rapidas {
+    background-color: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 14px 16px;
+}
+
+.dicas-rapidas h4 {
+    color: #16823a;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.dicas-rapidas ul {
+    margin: 0;
+    padding-left: 18px;
+    color: #334155;
+}
+
+.dicas-rapidas li {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.caixa-curiosidade {
+    background-color: #ecfdf5;
+    border-left: 4px solid #16823a;
+    border-radius: 12px;
+    padding: 12px 14px;
+    color: #334155;
+}
+
+.caixa-curiosidade strong {
+    color: #064e3b;
+}
+
+.caixa-curiosidade p {
+    margin-top: 6px;
+}
+
+.card-voce-sabia .btn-primary {
+    width: fit-content;
+}
