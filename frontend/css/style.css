@@ -1827,3 +1827,89 @@ body {
 .card-voce-sabia .btn-primary {
     width: fit-content;
 }
+
+/*usuario*/
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.top-icon {
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 50%;
+    background-color: #f8fafc;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.top-icon i {
+    font-size: 20px;
+}
+
+.top-icon:hover {
+    background-color: #ecfdf5;
+    color: #16823a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(22, 130, 58, 0.15);
+}
+
+.notification-dot {
+    width: 9px;
+    height: 9px;
+    background-color: #22c55e;
+    border: 2px solid white;
+    border-radius: 50%;
+    position: absolute;
+    top: 9px;
+    right: 9px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 12px 7px 7px;
+    border-radius: 999px;
+    background-color: #f8fafc;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.user-profile:hover {
+    background-color: #ecfdf5;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(22, 130, 58, 0.15);
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #dcfce7;
+    color: #16823a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar i {
+    font-size: 20px;
+}
+
+.user-profile span {
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.user-profile .bi-chevron-down {
+    font-size: 13px;
+    color: #64748b;
+}
