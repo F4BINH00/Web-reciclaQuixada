@@ -26,24 +26,16 @@ body {
 .logo {
     display: flex;
     align-items: center;
-    gap: 12px;
-    color: #16823a;
-    margin-bottom: 40px;
+    justify-content: center;
+    margin-bottom: 34px;
 }
 
-.logo i {
-    font-size: 42px;
-}
-
-.logo h1 {
-    font-size: 30px;
-    line-height: 28px;
-}
-
-.logo span {
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+.logo img {
+    width: 170px;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
 }
 
 .menu {
@@ -541,25 +533,16 @@ body {
 .footer-logo {
     display: flex;
     align-items: center;
-    gap: 14px;
+    justify-content: flex-start;
+    margin-bottom: 4px;
 }
 
-.footer-logo i {
-    font-size: 38px;
-    color: #16823a;
-}
-
-.footer-logo h3 {
-    font-size: 34px;
-    color: #16823a;
-    margin: 0;
-    font-weight: 800;
-}
-
-.footer-logo p {
-    margin: 2px 0 0;
-    color: #4b5563;
-    font-size: 15px;
+.footer-logo img {
+    width: 180px;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
 }
 
 .footer-description {
@@ -567,6 +550,7 @@ body {
     font-size: 15px;
     line-height: 1.7;
     max-width: 420px;
+    margin: 0;
 }
 
 .footer-column h4 {
