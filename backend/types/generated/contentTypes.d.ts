@@ -1135,6 +1135,7 @@ export interface PluginUsersPermissionsUser
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     confirmationToken: Schema.Attribute.String & Schema.Attribute.Private;
     confirmed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    cpf: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1165,7 +1166,7 @@ export interface PluginUsersPermissionsUser
     >;
     telefone: Schema.Attribute.String;
     tipo_usuario: Schema.Attribute.Enumeration<
-      ['cidadao', 'catador', 'comercio_escola', 'administrador']
+      ['cidadao', 'catador', 'comercio_escola']
     >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

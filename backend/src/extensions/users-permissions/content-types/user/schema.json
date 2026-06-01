@@ -80,9 +80,11 @@
       "enum": [
         "cidadao",
         "catador",
-        "comercio_escola",
-        "administrador"
+        "comercio_escola"
       ]
+    },
+    "cpf": {
+      "type": "string"
     }
   }
 }
