@@ -72,7 +72,7 @@
         <div class="avatar">
           <i class="bi bi-person-fill"></i>
         </div>
-        <span>Olá, Bruno!</span>
+        <span id="perfil-saudacao">Olá!</span>
       </div>
     </header>
 
@@ -84,23 +84,58 @@
         </div>
 
         <div class="schedule">
-          <div class="schedule-item"><strong>Nome:</strong> Bruno Mateus</div>
-          <div class="schedule-item"><strong>E-mail:</strong> bruno@email.com</div>
-          <div class="schedule-item"><strong>Telefone:</strong> (88) 99999-9999</div>
-          <div class="schedule-item"><strong>Endereço:</strong> Rua Exemplo, Centro - Quixadá</div>
-        </div>
+  <div class="schedule-item">
+    <strong>Nome:</strong>
+    <span id="perfil-nome">Carregando...</span>
+  </div>
+
+  <div class="schedule-item">
+    <strong>E-mail:</strong>
+    <span id="perfil-email">Carregando...</span>
+  </div>
+
+  <div class="schedule-item">
+    <strong>CPF:</strong>
+    <span id="perfil-cpf">Carregando...</span>
+  </div>
+
+  <div class="schedule-item">
+    <strong>Telefone:</strong>
+    <span id="perfil-telefone">Carregando...</span>
+  </div>
+
+  <div class="schedule-item">
+    <strong>Endereço:</strong>
+    <span id="perfil-endereco">Carregando...</span>
+  </div>
+
+  <div class="schedule-item">
+    <strong>Tipo de usuário:</strong>
+    <span id="perfil-tipo">Carregando...</span>
+  </div>
+</div>
       </div>
 
       <div class="panel">
         <h3>Resumo da participação</h3>
 
         <div class="collector">
-          <div class="collector-avatar">B</div>
-          <div>
-            <h4>Bruno Mateus</h4>
-            <p><i class="bi bi-recycle"></i> 12 descartes registrados</p>
-          </div>
-          <span>320</span>
+          <div class="profile-summary">
+  <div class="profile-summary-avatar" id="perfil-inicial">?</div>
+
+  <div class="profile-summary-info">
+    <h4 id="perfil-nome-resumo">Carregando...</h4>
+    <p>
+      <i class="bi bi-recycle"></i>
+      12 descartes registrados
+    </p>
+  </div>
+
+  <div class="profile-points">
+    <strong>320</strong>
+    <span>pontos</span>
+  </div>
+</div>
         </div>
 
         <p class="muted">
@@ -194,6 +229,6 @@
   </div>
 </footer>
   </main>
-
+<script src="js/perfil.js"></script>
 </body>
 </html>
