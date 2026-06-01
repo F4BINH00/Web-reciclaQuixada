@@ -2749,3 +2749,125 @@ bottom: 20px;
 .schedule-item span {
     color: #334155;
 }
+/* Botão editar perfil */
+
+.btn-edit-profile {
+    border: none;
+    background-color: #ecfdf5;
+    color: #16823a;
+    padding: 9px 14px;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.25s ease;
+}
+
+.btn-edit-profile:hover {
+    background-color: #16823a;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(22, 130, 58, 0.18);
+}
+
+/* Modal de edição do perfil */
+
+.profile-modal {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(15, 23, 42, 0.45);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 2000;
+}
+
+.profile-modal.active {
+    display: flex;
+}
+
+.profile-modal-content {
+    width: 100%;
+    max-width: 620px;
+    background-color: #ffffff;
+    border-radius: 18px;
+    padding: 26px;
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.22);
+}
+
+.profile-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 22px;
+}
+
+.profile-modal-header h3 {
+    color: #064e3b;
+    font-size: 24px;
+    margin: 0;
+}
+
+.profile-modal-close {
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+    background-color: #f1f5f9;
+    color: #334155;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.profile-modal-close:hover {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+.profile-edit-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.profile-edit-form .full {
+    grid-column: 1 / -1;
+}
+
+.form-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+@media (max-width: 700px) {
+    .profile-edit-form {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .form-actions .btn-primary,
+    .form-actions .btn-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+}
+.input-readonly {
+    background-color: #f1f5f9;
+    color: #64748b;
+    cursor: not-allowed;
+}
+
+.field-help {
+    color: #64748b;
+    font-size: 12px;
+    margin-top: 4px;
+}

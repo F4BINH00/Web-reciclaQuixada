@@ -79,9 +79,13 @@
     <section class="content-grid">
       <div class="panel">
         <div class="panel-header">
-          <h3>Informações pessoais</h3>
-          <span>Usuário comunidade</span>
-        </div>
+  <h3>Informações pessoais</h3>
+
+  <button type="button" class="btn-edit-profile" id="btn-editar-perfil">
+    <i class="bi bi-pencil-square"></i>
+    Editar perfil
+  </button>
+</div>
 
         <div class="schedule">
   <div class="schedule-item">
@@ -116,70 +120,123 @@
 </div>
       </div>
 
-      <div class="panel">
-        <h3>Resumo da participação</h3>
+     <div class="panel profile-panel">
+  <h3>Resumo da participação</h3>
 
-        <div class="collector">
-          <div class="profile-summary">
-  <div class="profile-summary-avatar" id="perfil-inicial">?</div>
+  <div class="profile-summary">
+    <div class="profile-summary-avatar" id="perfil-inicial">?</div>
 
-  <div class="profile-summary-info">
-    <h4 id="perfil-nome-resumo">Carregando...</h4>
-    <p>
-      <i class="bi bi-recycle"></i>
-      12 descartes registrados
-    </p>
+    <div class="profile-summary-info">
+      <h4 id="perfil-nome-resumo">Carregando...</h4>
+
+      <p>
+        <i class="bi bi-recycle"></i>
+        <span id="perfil-resumo-status">Buscando seus registros...</span>
+      </p>
+    </div>
+
+    <div class="profile-points">
+      <strong id="perfil-pontos">--</strong>
+      <span>pontos</span>
+    </div>
   </div>
 
-  <div class="profile-points">
-    <strong>320</strong>
-    <span>pontos</span>
-  </div>
+  <p class="muted" id="perfil-mensagem-participacao">
+    Carregando resumo da sua participação...
+  </p>
+
+  <a href="meus-descartes.html" class="btn-secondary profile-action" id="perfil-botao-acao">
+    <i class="bi bi-plus-circle"></i>
+    Registrar descarte
+  </a>
 </div>
-        </div>
-
-        <p class="muted">
-          Continue registrando seus descartes e contribuindo para uma cidade mais sustentável.
-        </p>
-      </div>
     </section>
 
     <section class="cards">
       <div class="card">
-        <div class="card-icon green">
-          <i class="bi bi-recycle"></i>
-        </div>
-        <div>
-          <p>Descartes</p>
-          <h3>12</h3>
-          <span>registrados</span>
-        </div>
-      </div>
+  <div class="card-icon green">
+    <i class="bi bi-recycle"></i>
+  </div>
+  <div>
+    <p>Descartes</p>
+    <h3 id="perfil-total-descartes">--</h3>
+    <span id="perfil-texto-descartes">buscando registros</span>
+  </div>
+</div>
 
-      <div class="card">
-        <div class="card-icon blue">
-          <i class="bi bi-truck"></i>
-        </div>
-        <div>
-          <p>Coletas</p>
-          <h3>3</h3>
-          <span>solicitadas</span>
-        </div>
-      </div>
+<div class="card">
+  <div class="card-icon blue">
+    <i class="bi bi-truck"></i>
+  </div>
+  <div>
+    <p>Coletas</p>
+    <h3 id="perfil-total-coletas">--</h3>
+    <span id="perfil-texto-coletas">buscando registros</span>
+  </div>
+</div>
 
-      <div class="card">
-        <div class="card-icon purple">
-          <i class="bi bi-leaf"></i>
-        </div>
-        <div>
-          <p>Impacto</p>
-          <h3>12,4 kg</h3>
-          <span>reciclados</span>
-        </div>
-      </div>
+<div class="card">
+  <div class="card-icon purple">
+    <i class="bi bi-leaf"></i>
+  </div>
+  <div>
+    <p>Impacto</p>
+    <h3 id="perfil-impacto">--</h3>
+    <span id="perfil-texto-impacto">buscando impacto</span>
+  </div>
+</div>
     </section>
 
-    
+    <div class="profile-modal" id="profile-modal">
+  <div class="profile-modal-content">
+
+    <div class="profile-modal-header">
+      <h3>Editar perfil</h3>
+
+      <button type="button" class="profile-modal-close" id="btn-fechar-modal">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+
+    <form id="form-editar-perfil" class="profile-edit-form">
+
+      <div class="form-group">
+        <label>Nome completo</label>
+        <input type="text" id="editar-nome">
+      </div>
+
+      <div class="form-group">
+        <label>CPF</label>
+        <input type="text" id="editar-cpf" readonly class="input-readonly">
+        <small class="field-help">
+  O CPF não pode ser alterado pelo usuário.
+</small>
+      </div>
+
+      <div class="form-group">
+        <label>Telefone</label>
+        <input type="text" id="editar-telefone">
+      </div>
+
+      <div class="form-group full">
+        <label>Endereço</label>
+        <input type="text" id="editar-endereco">
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn-secondary" id="btn-cancelar-edicao">
+          Cancelar
+        </button>
+
+        <button type="submit" class="btn-primary">
+          <i class="bi bi-check-circle"></i>
+          Salvar alterações
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
     <footer class="footer">
   <div class="footer-top">
   <div class="footer-brand">
