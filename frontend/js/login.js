@@ -1,5 +1,6 @@
 const botaoMostrarSenha = document.querySelector(".toggle-password");
 const campoSenha = document.getElementById("senha");
+const campoEmail = document.getElementById("email");
 const formularioLogin = document.querySelector("form");
 const botaoGoogle = document.querySelector(".login-google-btn");
 
@@ -15,20 +16,50 @@ botaoMostrarSenha.addEventListener("click", function () {
   }
 });
 
-formularioLogin.addEventListener("submit", function (event) {
+formularioLogin.addEventListener("submit", async function (event) {
   event.preventDefault();
 
-  const email = document.getElementById("email").value;
-  const senha = document.getElementById("senha").value;
+  const email = campoEmail.value.trim();
+  const senha = campoSenha.value.trim();
 
-  if (email === "" || senha === "") {
+  if (!email || !senha) {
     alert("Preencha o e-mail e a senha para continuar.");
     return;
   }
 
-  window.location.href = "dashboard.html";
+  try {
+    const resposta = await fetch("http://localhost:1337/api/auth/local", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        identifier: email,
+        password: senha
+      })
+    });
+
+    const dados = await resposta.json();
+
+    if (!resposta.ok) {
+      console.error("Erro no login:", dados);
+      alert("E-mail ou senha inválidos.");
+      return;
+    }
+
+    localStorage.setItem("token", dados.jwt);
+    localStorage.setItem("usuario", JSON.stringify(dados.user));
+
+    window.location.href = "dashboard.html";
+
+  } catch (erro) {
+    console.error("Erro de conexão:", erro);
+    alert("Não foi possível conectar ao Strapi. Verifique se o backend está rodando.");
+  }
 });
 
-botaoGoogle.addEventListener("click", function () {
-  alert("Login com Google ainda não implementado.");
-});
+if (botaoGoogle) {
+  botaoGoogle.addEventListener("click", function () {
+    alert("Login com Google ainda não implementado nesta versão.");
+  });
+}
