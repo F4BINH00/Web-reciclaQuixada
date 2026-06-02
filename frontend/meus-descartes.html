@@ -67,69 +67,122 @@
         <p>Acompanhe os descartes registrados e seu histórico de participação.</p>
       </div>
 
- <div class="user-info">
-  <button class="top-icon" type="button" title="Notificações">
-    <i class="bi bi-bell"></i>
-    <span class="notification-dot"></span>
-  </button>
+<div class="user-info">
 
-  <div class="user-profile">
-    <div class="avatar">
-      <i class="bi bi-person-fill"></i>
+  <div class="notification-menu">
+    <button class="top-icon" id="notification-button" type="button" title="Notificações">
+      <i class="bi bi-bell"></i>
+      <span class="notification-dot" id="notification-dot"></span>
+    </button>
+
+    <div class="notification-dropdown" id="notification-dropdown">
+      <div class="notification-header">
+        <h4>Notificações</h4>
+        <span id="notification-status">Ativas</span>
+      </div>
+
+      <p class="notification-text">
+        Você receberá avisos sobre coletas, descartes e atualizações da plataforma.
+      </p>
+
+      <button type="button" class="notification-toggle" id="notification-toggle">
+        <i class="bi bi-bell-slash"></i>
+        Desativar notificações
+      </button>
+
+      <div class="notification-empty">
+        <i class="bi bi-info-circle"></i>
+        <p>Nenhuma notificação nova no momento.</p>
+      </div>
     </div>
-    <span>Olá, Bruno!</span>
-    <i class="bi bi-chevron-down"></i>
   </div>
-</div>
+
+  <div class="user-menu">
+    <button class="user-profile" id="user-menu-button" type="button">
+      <div class="avatar">
+        <i class="bi bi-person-fill"></i>
+      </div>
+
+      <span class="saudacao-usuario">Olá!</span>
+      <i class="bi bi-chevron-down"></i>
+    </button>
+
+    <div class="user-dropdown" id="user-dropdown">
+      <a href="perfil.html">
+        <i class="bi bi-person"></i>
+        Meu perfil
+      </a>
+
+      <a href="meus-descartes.html">
+        <i class="bi bi-recycle"></i>
+        Meus descartes
+      </a>
+
+      <a href="solicita-coleta.html">
+        <i class="bi bi-truck"></i>
+        Solicitar coleta
+      </a>
+
+      <hr>
+
+      <button type="button" id="logout-button" class="logout-link">
+        <i class="bi bi-box-arrow-right"></i>
+        Sair
+      </button>
+    </div>
+  </div>
+
 </div>
     </header>
 
     <section class="cards">
-      <div class="card">
-        <div class="card-icon green">
-          <i class="bi bi-clipboard-check"></i>
-        </div>
-        <div>
-          <p>Descartes Registrados</p>
-          <h3>12</h3>
-          <span>este mês</span>
-        </div>
-      </div>
+  <div class="card">
+    <div class="card-icon green">
+      <i class="bi bi-clipboard-check"></i>
+    </div>
+    <div>
+      <p>Descartes Registrados</p>
+      <h3 id="total-descartes-usuario">--</h3>
+      <span id="texto-descartes-usuario">buscando registros</span>
+    </div>
+  </div>
 
-      <div class="card">
-        <div class="card-icon blue">
-          <i class="bi bi-calendar-check"></i>
-        </div>
-        <div>
-          <p>Última Coleta</p>
-          <h3>20 Abr</h3>
-          <span>coleta seletiva</span>
-        </div>
-      </div>
+  <div class="card">
+    <div class="card-icon blue">
+      <i class="bi bi-calendar-check"></i>
+    </div>
+    <div>
+      <p>Último Descarte</p>
+      <h3 id="ultimo-descarte-data">--</h3>
+      <span id="ultimo-descarte-texto">aguardando registro</span>
+    </div>
+  </div>
 
-      <div class="card">
-        <div class="card-icon purple">
-          <i class="bi bi-leaf"></i>
-        </div>
-        <div>
-          <p>Impacto Ambiental</p>
-          <h3>12,4 kg</h3>
-          <span>resíduos reciclados</span>
-        </div>
-      </div>
-    </section>
+  <div class="card">
+    <div class="card-icon purple">
+      <i class="bi bi-leaf"></i>
+    </div>
+    <div>
+      <p>Impacto Ambiental</p>
+      <h3 id="impacto-descartes-usuario">--</h3>
+      <span id="texto-impacto-descartes">buscando impacto</span>
+    </div>
+  </div>
+</section>
 
     <section class="panel">
       <div class="panel-header">
         <h3>Histórico de descartes</h3>
-        <span>Registros recentes</span>
+        <span id="status-historico-descartes">Carregando</span>
       </div>
 
-      <div class="schedule">
-        <div class="schedule-item">20 Abr - Plástico e papel - Coleta realizada</div>
-        <div class="schedule-item">15 Abr - Vidro - Entregue no Ecoponto Central</div>
-        <div class="schedule-item">08 Abr - Metal - Coleta solicitada</div>
-      </div>
+      <div class="schedule" id="lista-descartes-usuario">
+  <div class="empty-state">
+    <i class="bi bi-hourglass-split"></i>
+    <h4>Buscando descartes...</h4>
+    <p>Aguarde enquanto carregamos seu histórico.</p>
+  </div>
+</div>
     </section>
 
     
@@ -183,6 +236,7 @@
 </footer>
 
   </main>
-
+  <script src="js/meus-descartes.js"></script>
+<script src="js/topbar.js"></script>
 </body>
 </html>
