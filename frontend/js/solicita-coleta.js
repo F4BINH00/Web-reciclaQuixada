@@ -21,18 +21,21 @@ formSolicitacao.addEventListener("submit", async function (event) {
       data_coleta: dataColeta,
       horario_preferido: horarioPreferido,
       observacoes: observacoes,
-      situacao: "pendente"
-    }
+      situacao: "pendente",
+    },
   };
 
   try {
-    const resposta = await fetch("http://localhost:1337/api/solicitacao-de-coletas", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
+    const resposta = await fetch(
+      "http://localhost:1337/api/solicitacao-de-coletas",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(dadosSolicitacao),
       },
-      body: JSON.stringify(dadosSolicitacao)
-    });
+    );
 
     if (!resposta.ok) {
       throw new Error("Erro ao enviar solicitação.");
@@ -40,10 +43,11 @@ formSolicitacao.addEventListener("submit", async function (event) {
 
     alert("Solicitação de coleta enviada com sucesso!");
     formSolicitacao.reset();
-
   } catch (erro) {
     console.error(erro);
-    alert("Não foi possível enviar a solicitação. Verifique se o Strapi está rodando.");
+    alert(
+      "Não foi possível enviar a solicitação. Verifique se o Strapi está rodando.",
+    );
   }
 });
 

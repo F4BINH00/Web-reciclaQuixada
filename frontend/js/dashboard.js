@@ -2,11 +2,11 @@ const dashboardMap = L.map("dashboard-map", {
   zoomControl: false,
   dragging: false,
   scrollWheelZoom: false,
-  doubleClickZoom: false
+  doubleClickZoom: false,
 }).setView([-4.9708, -39.0154], 14);
 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  attribution: "&copy; OpenStreetMap contributors"
+  attribution: "&copy; OpenStreetMap contributors",
 }).addTo(dashboardMap);
 
 L.marker([-4.9708, -39.0154])
@@ -33,8 +33,8 @@ async function carregarUsuarioDashboard() {
   try {
     const resposta = await fetch("http://localhost:1337/api/users/me", {
       headers: {
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     });
 
     const usuario = await resposta.json();
@@ -50,19 +50,17 @@ async function carregarUsuarioDashboard() {
     const primeiroNome = obterPrimeiroNome(nomeCompleto);
 
     saudacaoDashboard.textContent = `Olá, ${primeiroNome}!`;
-
   } catch (erro) {
     console.error("Erro ao carregar usuário:", erro);
   }
 }
 
-
 async function buscarDados(endpoint) {
   try {
     const resposta = await fetch(`http://localhost:1337/api/${endpoint}`, {
       headers: {
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     });
 
     if (!resposta.ok) {
@@ -72,7 +70,6 @@ async function buscarDados(endpoint) {
 
     const dados = await resposta.json();
     return dados.data || [];
-
   } catch (erro) {
     console.error(`Erro ao buscar ${endpoint}:`, erro);
     return [];
@@ -103,13 +100,16 @@ async function carregarResumoDashboard() {
   document.getElementById("total-pontos-coleta").textContent = pontos.length;
   document.getElementById("total-coletas").textContent = coletas.length;
   document.getElementById("total-descartes").textContent = descartes.length;
-  document.getElementById("total-impacto").textContent = `${impacto.toFixed(1)} kg`;
+  document.getElementById("total-impacto").textContent =
+    `${impacto.toFixed(1)} kg`;
 
   document.getElementById("texto-pontos-coleta").textContent =
     pontos.length === 1 ? "ponto cadastrado" : "pontos cadastrados";
 
   document.getElementById("texto-coletas").textContent =
-    coletas.length === 1 ? "solicitação registrada" : "solicitações registradas";
+    coletas.length === 1
+      ? "solicitação registrada"
+      : "solicitações registradas";
 
   document.getElementById("texto-descartes").textContent =
     descartes.length === 1 ? "descarte registrado" : "descartes registrados";

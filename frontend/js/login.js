@@ -31,12 +31,12 @@ formularioLogin.addEventListener("submit", async function (event) {
     const resposta = await fetch("http://localhost:1337/api/auth/local", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         identifier: email,
-        password: senha
-      })
+        password: senha,
+      }),
     });
 
     const dados = await resposta.json();
@@ -51,10 +51,11 @@ formularioLogin.addEventListener("submit", async function (event) {
     localStorage.setItem("usuario", JSON.stringify(dados.user));
 
     window.location.href = "dashboard.html";
-
   } catch (erro) {
     console.error("Erro de conexão:", erro);
-    alert("Não foi possível conectar ao Strapi. Verifique se o backend está rodando.");
+    alert(
+      "Não foi possível conectar ao Strapi. Verifique se o backend está rodando.",
+    );
   }
 });
 

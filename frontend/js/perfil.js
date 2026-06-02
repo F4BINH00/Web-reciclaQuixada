@@ -28,7 +28,7 @@ function formatarTipoUsuario(tipo) {
   const tipos = {
     cidadao: "Cidadão",
     catador: "Catador/Coletor",
-    comercio_escola: "Comércio/Escola"
+    comercio_escola: "Comércio/Escola",
   };
 
   return tipos[tipo] || "Não informado";
@@ -48,21 +48,20 @@ async function buscarRegistrosDoUsuario(endpoint, usuarioId) {
       `http://localhost:1337/api/${endpoint}?filters[usuario][id][$eq]=${usuarioId}`,
       {
         headers: {
-          Authorization: `Bearer ${token}`
-        }
-      }
+          Authorization: `Bearer ${token}`,
+        },
+      },
     );
 
     if (!resposta.ok) {
       console.warn(
-        `Não foi possível buscar ${endpoint}. Verifique relação/permissão no Strapi.`
+        `Não foi possível buscar ${endpoint}. Verifique relação/permissão no Strapi.`,
       );
       return [];
     }
 
     const dados = await resposta.json();
     return dados.data || [];
-
   } catch (erro) {
     console.error(`Erro ao buscar ${endpoint}:`, erro);
     return [];
@@ -83,7 +82,11 @@ function calcularImpacto(descartes) {
   }, 0);
 }
 
-function atualizarResumoParticipacao(totalDescartes, totalColetas, impactoTotal) {
+function atualizarResumoParticipacao(
+  totalDescartes,
+  totalColetas,
+  impactoTotal,
+) {
   const pontos = totalDescartes * 10;
 
   const campoTotalDescartes = document.getElementById("perfil-total-descartes");
@@ -96,7 +99,9 @@ function atualizarResumoParticipacao(totalDescartes, totalColetas, impactoTotal)
   const textoImpacto = document.getElementById("perfil-texto-impacto");
 
   const resumoStatus = document.getElementById("perfil-resumo-status");
-  const mensagemParticipacao = document.getElementById("perfil-mensagem-participacao");
+  const mensagemParticipacao = document.getElementById(
+    "perfil-mensagem-participacao",
+  );
 
   if (campoTotalDescartes) {
     campoTotalDescartes.textContent = totalDescartes;
@@ -121,7 +126,9 @@ function atualizarResumoParticipacao(totalDescartes, totalColetas, impactoTotal)
 
   if (textoColetas) {
     textoColetas.textContent =
-      totalColetas === 1 ? "solicitação encontrada" : "solicitações encontradas";
+      totalColetas === 1
+        ? "solicitação encontrada"
+        : "solicitações encontradas";
   }
 
   if (textoImpacto) {
@@ -131,7 +138,8 @@ function atualizarResumoParticipacao(totalDescartes, totalColetas, impactoTotal)
 
   if (totalDescartes === 0 && totalColetas === 0) {
     if (resumoStatus) {
-      resumoStatus.textContent = "Você ainda não possui registros de participação.";
+      resumoStatus.textContent =
+        "Você ainda não possui registros de participação.";
     }
 
     if (mensagemParticipacao) {
@@ -143,8 +151,7 @@ function atualizarResumoParticipacao(totalDescartes, totalColetas, impactoTotal)
   }
 
   if (resumoStatus) {
-    resumoStatus.textContent =
-      `${totalDescartes} descartes e ${totalColetas} coletas vinculados à sua conta.`;
+    resumoStatus.textContent = `${totalDescartes} descartes e ${totalColetas} coletas vinculados à sua conta.`;
   }
 
   if (mensagemParticipacao) {
@@ -155,7 +162,10 @@ function atualizarResumoParticipacao(totalDescartes, totalColetas, impactoTotal)
 
 async function carregarParticipacao(usuarioId) {
   const descartes = await buscarRegistrosDoUsuario("descartes", usuarioId);
-  const coletas = await buscarRegistrosDoUsuario("solicitacao-de-coletas", usuarioId);
+  const coletas = await buscarRegistrosDoUsuario(
+    "solicitacao-de-coletas",
+    usuarioId,
+  );
 
   const totalDescartes = descartes.length;
   const totalColetas = coletas.length;
@@ -175,8 +185,8 @@ async function carregarPerfil() {
     const resposta = await fetch("http://localhost:1337/api/users/me", {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     });
 
     const usuario = await resposta.json();
@@ -205,10 +215,11 @@ async function carregarPerfil() {
     perfilNomeResumo.textContent = nomeCompleto;
 
     await carregarParticipacao(usuario.id);
-
   } catch (erro) {
     console.error("Erro de conexão:", erro);
-    alert("Erro ao conectar com o Strapi. Verifique se o backend está rodando.");
+    alert(
+      "Erro ao conectar com o Strapi. Verifique se o backend está rodando.",
+    );
   }
 }
 
@@ -218,7 +229,8 @@ function abrirModalPerfil() {
     return;
   }
 
-  editarNome.value = usuarioLogado.nome_completo || usuarioLogado.username || "";
+  editarNome.value =
+    usuarioLogado.nome_completo || usuarioLogado.username || "";
   editarCpf.value = usuarioLogado.cpf || "";
   editarTelefone.value = usuarioLogado.telefone || "";
   editarEndereco.value = usuarioLogado.endereco || "";
@@ -264,25 +276,28 @@ if (formularioEditarPerfil) {
     const enderecoAtualizado = editarEndereco.value.trim();
 
     if (!nomeAtualizado || !telefoneAtualizado || !enderecoAtualizado) {
-  alert("Preencha todos os campos editáveis.");
-  return;
-}
+      alert("Preencha todos os campos editáveis.");
+      return;
+    }
 
     try {
-      const resposta = await fetch(`http://localhost:1337/api/users/${usuarioLogado.id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`
+      const resposta = await fetch(
+        `http://localhost:1337/api/users/${usuarioLogado.id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            username: nomeAtualizado,
+            nome_completo: nomeAtualizado,
+            cpf: cpfAtualizado,
+            telefone: telefoneAtualizado,
+            endereco: enderecoAtualizado,
+          }),
         },
-        body: JSON.stringify({
-          username: nomeAtualizado,
-          nome_completo: nomeAtualizado,
-          cpf: cpfAtualizado,
-          telefone: telefoneAtualizado,
-          endereco: enderecoAtualizado
-        })
-      });
+      );
 
       const usuarioAtualizado = await resposta.json();
 
@@ -295,13 +310,18 @@ if (formularioEditarPerfil) {
       usuarioLogado = usuarioAtualizado;
       localStorage.setItem("usuario", JSON.stringify(usuarioAtualizado));
 
-      const nomeCompleto = usuarioAtualizado.nome_completo || usuarioAtualizado.username || "Usuário";
+      const nomeCompleto =
+        usuarioAtualizado.nome_completo ||
+        usuarioAtualizado.username ||
+        "Usuário";
       const primeiroNome = obterPrimeiroNome(nomeCompleto);
 
       perfilNome.textContent = nomeCompleto;
       perfilCpf.textContent = usuarioAtualizado.cpf || "Não informado";
-      perfilTelefone.textContent = usuarioAtualizado.telefone || "Não informado";
-      perfilEndereco.textContent = usuarioAtualizado.endereco || "Não informado";
+      perfilTelefone.textContent =
+        usuarioAtualizado.telefone || "Não informado";
+      perfilEndereco.textContent =
+        usuarioAtualizado.endereco || "Não informado";
 
       perfilSaudacao.textContent = `Olá, ${primeiroNome}!`;
       perfilInicial.textContent = primeiroNome.charAt(0).toUpperCase();
@@ -309,7 +329,6 @@ if (formularioEditarPerfil) {
 
       fecharModalPerfil();
       alert("Perfil atualizado com sucesso!");
-
     } catch (erro) {
       console.error("Erro de conexão:", erro);
       alert("Erro ao conectar com o Strapi.");

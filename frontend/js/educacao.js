@@ -1,31 +1,31 @@
 const listaResiduos = document.getElementById("lista-residuos");
 
 const imagensResiduos = {
-  "Plástico": "img/plastico.png",
-  "Papel": "img/papel.png",
-  "Papelão": "img/papelao.png",
-  "Vidro": "img/vidro.png",
-  "Metal": "img/metal.png",
-  "Alumínio": "img/aluminio.png",
+  Plástico: "img/plastico.png",
+  Papel: "img/papel.png",
+  Papelão: "img/papelao.png",
+  Vidro: "img/vidro.png",
+  Metal: "img/metal.png",
+  Alumínio: "img/aluminio.png",
   "Embalagem longa vida": "img/emb-long-vida.png",
-  "Eletrônicos": "img/eletronico.png",
+  Eletrônicos: "img/eletronico.png",
   "Óleo de cozinha usado": "img/oleo.png",
   "Pilhas e baterias": "img/pilhas.png",
-  "Isopor": "img/isopor.png"
+  Isopor: "img/isopor.png",
 };
 
 const iconesResiduos = {
-  "Plástico": "bi-cup-straw",
-  "Papel": "bi-file-earmark-text",
-  "Papelão": "bi-box-seam",
-  "Vidro": "bi-cup",
-  "Metal": "bi-nut",
-  "Alumínio": "bi-cup-hot",
+  Plástico: "bi-cup-straw",
+  Papel: "bi-file-earmark-text",
+  Papelão: "bi-box-seam",
+  Vidro: "bi-cup",
+  Metal: "bi-nut",
+  Alumínio: "bi-cup-hot",
   "Embalagem longa vida": "bi-box",
-  "Eletrônicos": "bi-phone",
+  Eletrônicos: "bi-phone",
   "Óleo de cozinha usado": "bi-droplet-half",
   "Pilhas e baterias": "bi-battery-charging",
-  "Isopor": "bi-box2"
+  Isopor: "bi-box2",
 };
 
 async function carregarResiduos() {
@@ -90,7 +90,6 @@ async function carregarResiduos() {
 
       listaResiduos.appendChild(item);
     });
-
   } catch (erro) {
     console.error(erro);
 

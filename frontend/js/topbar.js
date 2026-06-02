@@ -111,8 +111,8 @@ async function carregarSaudacaoTopbar() {
   try {
     const resposta = await fetch("http://localhost:1337/api/users/me", {
       headers: {
-        Authorization: `Bearer ${tokenTopbar}`
-      }
+        Authorization: `Bearer ${tokenTopbar}`,
+      },
     });
 
     const usuario = await resposta.json();
@@ -127,7 +127,6 @@ async function carregarSaudacaoTopbar() {
     saudacoesUsuario.forEach(function (item) {
       item.textContent = `Olá, ${primeiroNome}!`;
     });
-
   } catch (erro) {
     console.error("Erro ao carregar saudação:", erro);
   }

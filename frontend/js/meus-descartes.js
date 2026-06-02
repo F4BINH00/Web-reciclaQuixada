@@ -1,19 +1,31 @@
 const tokenDescartes = localStorage.getItem("token");
 
-const totalDescartesUsuario = document.getElementById("total-descartes-usuario");
-const textoDescartesUsuario = document.getElementById("texto-descartes-usuario");
+const totalDescartesUsuario = document.getElementById(
+  "total-descartes-usuario",
+);
+const textoDescartesUsuario = document.getElementById(
+  "texto-descartes-usuario",
+);
 const ultimoDescarteData = document.getElementById("ultimo-descarte-data");
 const ultimoDescarteTexto = document.getElementById("ultimo-descarte-texto");
-const impactoDescartesUsuario = document.getElementById("impacto-descartes-usuario");
-const textoImpactoDescartes = document.getElementById("texto-impacto-descartes");
-const listaDescartesUsuario = document.getElementById("lista-descartes-usuario");
-const statusHistoricoDescartes = document.getElementById("status-historico-descartes");
+const impactoDescartesUsuario = document.getElementById(
+  "impacto-descartes-usuario",
+);
+const textoImpactoDescartes = document.getElementById(
+  "texto-impacto-descartes",
+);
+const listaDescartesUsuario = document.getElementById(
+  "lista-descartes-usuario",
+);
+const statusHistoricoDescartes = document.getElementById(
+  "status-historico-descartes",
+);
 
 async function buscarUsuarioLogado() {
   const resposta = await fetch("http://localhost:1337/api/users/me", {
     headers: {
-      Authorization: `Bearer ${tokenDescartes}`
-    }
+      Authorization: `Bearer ${tokenDescartes}`,
+    },
   });
 
   if (!resposta.ok) {
@@ -28,13 +40,15 @@ async function buscarDescartesDoUsuario(usuarioId) {
     `http://localhost:1337/api/descartes?filters[usuario][id][$eq]=${usuarioId}&sort=createdAt:desc`,
     {
       headers: {
-        Authorization: `Bearer ${tokenDescartes}`
-      }
-    }
+        Authorization: `Bearer ${tokenDescartes}`,
+      },
+    },
   );
 
   if (!resposta.ok) {
-    console.warn("Não foi possível buscar descartes. Verifique permissões ou relação no Strapi.");
+    console.warn(
+      "Não foi possível buscar descartes. Verifique permissões ou relação no Strapi.",
+    );
     return [];
   }
 
@@ -69,7 +83,7 @@ function formatarData(dataTexto) {
 
   return data.toLocaleDateString("pt-BR", {
     day: "2-digit",
-    month: "short"
+    month: "short",
   });
 }
 
@@ -123,10 +137,12 @@ function renderizarDescartes(descartes) {
   descartes.forEach(function (descarte) {
     const item = obterDadosDescarte(descarte);
 
-    const material = item.material || item.tipo_residuo || "Material não informado";
+    const material =
+      item.material || item.tipo_residuo || "Material não informado";
     const status = item.status || "Registro realizado";
     const data = formatarData(item.createdAt);
-    const quantidade = item.quantidade || item.peso_kg || item.quantidade_kg || "";
+    const quantidade =
+      item.quantidade || item.peso_kg || item.quantidade_kg || "";
 
     const div = document.createElement("div");
     div.classList.add("schedule-item");
@@ -158,7 +174,6 @@ async function carregarMeusDescartes() {
     }
 
     renderizarDescartes(descartes);
-
   } catch (erro) {
     console.error("Erro ao carregar descartes:", erro);
 
