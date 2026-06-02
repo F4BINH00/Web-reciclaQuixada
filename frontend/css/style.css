@@ -2871,3 +2871,242 @@ bottom: 20px;
     font-size: 12px;
     margin-top: 4px;
 }
+/* Dropdown de notificações e perfil */
+
+.notification-menu,
+.user-menu {
+    position: relative;
+}
+
+.top-icon {
+    position: relative;
+    border: none;
+    background-color: #ffffff;
+    color: #0f172a;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+}
+
+.top-icon:hover {
+    background-color: #ecfdf5;
+    color: #16823a;
+    transform: translateY(-2px);
+}
+
+.notification-dot {
+    position: absolute;
+    top: 8px;
+    right: 9px;
+    width: 8px;
+    height: 8px;
+    background-color: #22c55e;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+}
+
+.notification-dot.disabled {
+    background-color: #94a3b8;
+}
+
+.notification-dropdown,
+.user-dropdown {
+    position: absolute;
+    top: 52px;
+    right: 0;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.14);
+    display: none;
+    z-index: 1000;
+}
+
+.notification-dropdown.active,
+.user-dropdown.active {
+    display: block;
+}
+
+.notification-dropdown {
+    width: 320px;
+    padding: 16px;
+}
+
+.notification-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.notification-header h4 {
+    color: #064e3b;
+    font-size: 18px;
+    margin: 0;
+}
+
+.notification-header span {
+    background-color: #dcfce7;
+    color: #16823a;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 9px;
+    border-radius: 999px;
+}
+
+.notification-header span.disabled {
+    background-color: #f1f5f9;
+    color: #64748b;
+}
+
+.notification-text {
+    color: #475569;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 14px;
+}
+
+.notification-toggle {
+    width: 100%;
+    border: 1px solid #16823a;
+    background-color: #ffffff;
+    color: #16823a;
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.25s ease;
+}
+
+.notification-toggle:hover {
+    background-color: #16823a;
+    color: #ffffff;
+}
+
+.notification-empty {
+    margin-top: 14px;
+    padding: 12px;
+    border-radius: 12px;
+    background-color: #f8fafc;
+    color: #64748b;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.notification-empty p {
+    margin: 0;
+    font-size: 13px;
+}
+
+.user-profile {
+    border: none;
+    background-color: #ffffff;
+    color: #0f172a;
+    border-radius: 999px;
+    padding: 7px 12px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.user-profile:hover {
+    background-color: #ecfdf5;
+    color: #16823a;
+    transform: translateY(-2px);
+}
+
+.user-dropdown {
+    width: 220px;
+    padding: 10px;
+}
+
+.user-dropdown a,
+.user-dropdown button {
+    width: 100%;
+    border: none;
+    background: none;
+    text-decoration: none;
+    color: #334155;
+    padding: 11px 12px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.user-dropdown a:hover,
+.user-dropdown button:hover {
+    background-color: #ecfdf5;
+    color: #16823a;
+}
+
+.user-dropdown hr {
+    border: none;
+    border-top: 1px solid #e5e7eb;
+    margin: 8px 0;
+}
+
+.user-dropdown .logout-link {
+    color: #b91c1c;
+}
+
+.user-dropdown .logout-link:hover {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+/* Estado vazio para listas sem registros */
+.empty-state {
+    background-color: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 16px;
+    padding: 28px;
+    text-align: center;
+    color: #64748b;
+}
+
+.empty-state i {
+    font-size: 34px;
+    color: #16823a;
+    margin-bottom: 10px;
+}
+
+.empty-state h4 {
+    color: #064e3b;
+    font-size: 20px;
+    margin: 8px 0;
+}
+
+.empty-state p {
+    margin: 0 0 16px;
+    line-height: 1.5;
+}
+.empty-state .btn-primary i {
+    color: #ffffff;
+}
+.empty-state .btn-primary:hover i {
+    color: #ffffff;
+}
+
+#status-historico-descartes {
+    background-color: #f1f5f9;
+    color: #64748b;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+}
