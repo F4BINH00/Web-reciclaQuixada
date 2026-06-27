@@ -95,8 +95,10 @@ async function carregarResumoDashboard() {
   const coletas = await buscarDados("solicitacao-de-coletas");
   const descartes = await buscarDados("descartes");
 
-  const impacto = calcularImpacto(descartes);
+   carregarMateriaisMaisDescartados(descartes);
 
+   const impacto = calcularImpacto(descartes);
+  
   document.getElementById("total-pontos-coleta").textContent = pontos.length;
   document.getElementById("total-coletas").textContent = coletas.length;
   document.getElementById("total-descartes").textContent = descartes.length;
@@ -276,3 +278,60 @@ carregarResumoDashboard();
 carregarProximaColeta();
 carregarUsuarioDashboard();
 carregarResumoDashboard();
+function carregarMateriaisMaisDescartados(descartes) {
+  const container = document.getElementById("materiais-dashboard");
+
+  if (!container) {
+    return;
+  }
+
+  if (!descartes || descartes.length === 0) {
+    container.innerHTML = `
+      <div class="empty-state compact">
+        <i class="bi bi-bar-chart"></i>
+        <h4>Sem dados suficientes</h4>
+        <p>Os materiais mais descartados aparecerão quando houver registros.</p>
+      </div>
+    `;
+    return;
+  }
+
+  const contagem = {};
+
+  descartes.forEach(function (descarte) {
+    const item = descarte.attributes || descarte;
+
+    const material =
+      item.material ||
+      item.tipo_residuo ||
+      item.nome ||
+      "Não informado";
+
+    contagem[material] = (contagem[material] || 0) + 1;
+  });
+
+  const materiaisOrdenados = Object.entries(contagem).sort(function (a, b) {
+    return b[1] - a[1];
+  });
+
+  const total = descartes.length;
+
+  container.innerHTML = "";
+
+  materiaisOrdenados.slice(0, 4).forEach(function ([material, quantidade]) {
+    const porcentagem = Math.round((quantidade / total) * 100);
+
+    const div = document.createElement("div");
+    div.classList.add("material");
+
+    div.innerHTML = `
+      <span>${material}</span>
+      <div class="progress">
+        <div style="width: ${porcentagem}%;"></div>
+      </div>
+      <strong>${porcentagem}%</strong>
+    `;
+
+    container.appendChild(div);
+  });
+}
