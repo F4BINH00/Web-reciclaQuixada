@@ -181,6 +181,98 @@ if (botaoBuscaDashboard && campoBuscaDashboard) {
     }
   );
 }
+function formatarDataCompleta(dataTexto) {
+  if (!dataTexto) {
+    return "--";
+  }
 
+  const data = new Date(dataTexto);
+
+  return data.toLocaleDateString("pt-BR", {
+    weekday: "long",
+    day: "2-digit",
+    month: "long",
+  });
+}
+
+function formatarDia(dataTexto) {
+  if (!dataTexto) {
+    return "--";
+  }
+
+  const data = new Date(dataTexto);
+
+  return data.toLocaleDateString("pt-BR", {
+    day: "2-digit",
+  });
+}
+
+function formatarMes(dataTexto) {
+  if (!dataTexto) {
+    return "--";
+  }
+
+  const data = new Date(dataTexto);
+
+  return data.toLocaleDateString("pt-BR", {
+    month: "short",
+  });
+}
+
+async function carregarProximaColeta() {
+  const container = document.getElementById("proxima-coleta-dashboard");
+
+  if (!container) {
+    return;
+  }
+
+  const coletas = await buscarDados("solicitacao-de-coletas");
+
+  if (coletas.length === 0) {
+    container.innerHTML = `
+      <div class="empty-state compact">
+        <i class="bi bi-calendar-x"></i>
+        <h4>Nenhuma coleta agendada</h4>
+        <p>Quando houver uma solicitação registrada, ela aparecerá aqui.</p>
+      </div>
+    `;
+    return;
+  }
+
+  const primeiraColeta = coletas[0].attributes || coletas[0];
+
+  const dataColeta =
+    primeiraColeta.data_coleta ||
+    primeiraColeta.data ||
+    primeiraColeta.createdAt;
+
+  const tipoColeta =
+    primeiraColeta.tipo_residuo ||
+    primeiraColeta.material ||
+    "Coleta solicitada";
+
+  const horario =
+    primeiraColeta.horario ||
+    primeiraColeta.periodo ||
+    "Horário não informado";
+
+  container.innerHTML = `
+    <div class="collect-box">
+      <div class="date">
+        <strong>${formatarDia(dataColeta)}</strong>
+        <span>${formatarMes(dataColeta)}</span>
+      </div>
+
+      <div>
+        <h4>${tipoColeta}</h4>
+        <p>${formatarDataCompleta(dataColeta)}</p>
+        <p>${horario}</p>
+      </div>
+    </div>
+  `;
+}
+carregarUsuarioDashboard();
+carregarResumoDashboard();
+carregarProximaColeta();
 carregarUsuarioDashboard();
 carregarResumoDashboard();
