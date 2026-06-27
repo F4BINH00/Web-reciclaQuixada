@@ -117,6 +117,70 @@ async function carregarResumoDashboard() {
   document.getElementById("texto-impacto").textContent =
     impacto > 0 ? "de resíduos reciclados" : "aguardando registros";
 }
+// Busca da dashboard
+
+const campoBuscaDashboard = document.getElementById("dashboard-search");
+const botaoBuscaDashboard = document.getElementById("dashboard-search-button");
+
+function realizarBuscaDashboard() {
+  if (!campoBuscaDashboard) {
+    return;
+  }
+
+  const termo = campoBuscaDashboard.value.trim().toLowerCase();
+
+  if (!termo) {
+    alert("Digite algo para buscar.");
+    return;
+  }
+
+  if (
+    termo.includes("ponto") ||
+    termo.includes("coleta") ||
+    termo.includes("ecoponto")
+  ) {
+    window.location.href =
+      `pontos-coleta.html?busca=${encodeURIComponent(termo)}`;
+    return;
+  }
+
+  if (
+    termo.includes("plástico") ||
+    termo.includes("plastico") ||
+    termo.includes("papel") ||
+    termo.includes("vidro") ||
+    termo.includes("metal") ||
+    termo.includes("óleo") ||
+    termo.includes("oleo") ||
+    termo.includes("pilha") ||
+    termo.includes("eletrônico") ||
+    termo.includes("eletronico") ||
+    termo.includes("isopor")
+  ) {
+    window.location.href =
+      `educacao.html?busca=${encodeURIComponent(termo)}`;
+    return;
+  }
+
+  window.location.href =
+    `educacao.html?busca=${encodeURIComponent(termo)}`;
+}
+
+if (botaoBuscaDashboard && campoBuscaDashboard) {
+  botaoBuscaDashboard.addEventListener(
+    "click",
+    realizarBuscaDashboard
+  );
+
+  campoBuscaDashboard.addEventListener(
+    "keydown",
+    function (event) {
+      if (event.key === "Enter") {
+        realizarBuscaDashboard();
+      }
+    }
+  );
+}
 
 carregarUsuarioDashboard();
 carregarResumoDashboard();
