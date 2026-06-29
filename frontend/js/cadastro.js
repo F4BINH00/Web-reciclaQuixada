@@ -79,7 +79,21 @@ formularioCadastro.addEventListener("submit", async function (event) {
     alert("Você precisa aceitar os termos de uso para continuar.");
     return;
   }
+  const documentoLabel = document.getElementById("documento-label");
+  const documentoInput = document.getElementById("documento");
 
+  function atualizarCampoDocumento(tipo) {
+    if (tipo === "comercio_escola") {
+      documentoLabel.textContent = "CNPJ";
+      documentoInput.placeholder = "00.000.000/0000-00";
+    } else {
+      documentoLabel.textContent = "CPF";
+      documentoInput.placeholder = "000.000.000-00";
+    }
+
+    documentoInput.value = "";
+  }
+  atualizarCampoDocumento(tipoUsuarioSelecionado);
   try {
     const respostaCadastro = await fetch(
       "http://localhost:1337/api/auth/local/register",
@@ -153,3 +167,10 @@ formularioCadastro.addEventListener("submit", async function (event) {
     );
   }
 });
+const botaoGoogle = document.getElementById("google-button");
+
+if (botaoGoogle) {
+  botaoGoogle.addEventListener("click", function () {
+    alert("Cadastro com Google ainda não está disponível nesta versão.");
+  });
+}

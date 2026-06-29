@@ -1641,7 +1641,14 @@ body {
   font-size: 14px;
   margin-bottom: 10px;
 }
-
+.soon-badge {
+  margin-left: 8px;
+  background-color: #f1f5f9;
+  color: #64748b;
+  font-size: 11px;
+  padding: 3px 7px;
+  border-radius: 999px;
+}
 /* Tipos de usuário */
 
 .user-types {
@@ -3121,4 +3128,50 @@ body {
   border-radius: 999px;
   font-size: 13px;
   font-weight: 700;
+}
+.empty-state.compact {
+  padding: 18px;
+}
+
+.empty-state.compact i {
+  font-size: 26px;
+}
+
+.empty-state.compact h4 {
+  font-size: 16px;
+}
+
+.empty-state.compact p {
+  font-size: 13px;
+  margin-bottom: 0;
+}
+/* Páginas legais: termos de uso e política de privacidade */
+.legal-page {
+  max-width: 850px;
+  margin: 60px auto;
+  padding: 32px;
+  background-color: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+  color: #334155;
+  line-height: 1.7;
+}
+
+.legal-page h1 {
+  color: #064e3b;
+  margin-bottom: 20px;
+}
+
+.legal-page p {
+  margin-bottom: 16px;
+}
+
+.legal-page a {
+  color: #16823a;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.legal-page a:hover {
+  text-decoration: underline;
 }
