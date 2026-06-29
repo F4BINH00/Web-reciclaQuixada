@@ -337,6 +337,14 @@ body {
   font-weight: bold;
   text-decoration: none;
 }
+/*caixa de busca da dashboard*/
+.search-box i {
+  cursor: pointer;
+}
+
+.search-box i:hover {
+  color: #16823a;
+}
 
 /* Mapa real da dashboard */
 .dashboard-map {
