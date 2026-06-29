@@ -1,6 +1,10 @@
 const botoesTipoUsuario = document.querySelectorAll(".user-types button");
 const formularioCadastro = document.querySelector("form");
 
+const documentoLabel = document.getElementById("documento-label");
+const documentoInput = document.getElementById("documento");
+const botaoGoogle = document.getElementById("google-button");
+
 let tipoUsuarioSelecionado = "cidadao";
 
 const tiposUsuario = {
@@ -8,6 +12,18 @@ const tiposUsuario = {
   "Catador/Coletor": "catador",
   "Comércio/Escola": "comercio_escola",
 };
+
+function atualizarCampoDocumento(tipo) {
+  if (tipo === "comercio_escola") {
+    documentoLabel.textContent = "CNPJ";
+    documentoInput.placeholder = "00.000.000/0000-00";
+  } else {
+    documentoLabel.textContent = "CPF";
+    documentoInput.placeholder = "000.000.000-00";
+  }
+
+  documentoInput.value = "";
+}
 
 botoesTipoUsuario.forEach(function (botao) {
   botao.addEventListener("click", function () {
@@ -23,6 +39,8 @@ botoesTipoUsuario.forEach(function (botao) {
       : botao.textContent.trim();
 
     tipoUsuarioSelecionado = tiposUsuario[textoTipo] || "cidadao";
+
+    atualizarCampoDocumento(tipoUsuarioSelecionado);
   });
 });
 
@@ -32,30 +50,35 @@ formularioCadastro.addEventListener("submit", async function (event) {
   const nome = document
     .querySelector('input[placeholder="Digite seu nome completo"]')
     .value.trim();
+
   const email = document
     .querySelector('input[placeholder="seu@email.com"]')
     .value.trim();
-  const cpf = document
-    .querySelector('input[placeholder="000.000.000-00"]')
-    .value.trim();
+
+  const documento = documentoInput.value.trim();
+
   const telefone = document
     .querySelector('input[placeholder="(88) 99999-9999"]')
     .value.trim();
+
   const endereco = document
     .querySelector('input[placeholder="Rua, número, bairro, cidade - CE"]')
     .value.trim();
+
   const senha = document
     .querySelector('input[placeholder="Crie uma senha"]')
     .value.trim();
+
   const confirmarSenha = document
     .querySelector('input[placeholder="Confirme sua senha"]')
     .value.trim();
+
   const aceitouTermos = document.getElementById("termos").checked;
 
   if (
     !nome ||
     !email ||
-    !cpf ||
+    !documento ||
     !telefone ||
     !endereco ||
     !senha ||
@@ -79,21 +102,7 @@ formularioCadastro.addEventListener("submit", async function (event) {
     alert("Você precisa aceitar os termos de uso para continuar.");
     return;
   }
-  const documentoLabel = document.getElementById("documento-label");
-  const documentoInput = document.getElementById("documento");
 
-  function atualizarCampoDocumento(tipo) {
-    if (tipo === "comercio_escola") {
-      documentoLabel.textContent = "CNPJ";
-      documentoInput.placeholder = "00.000.000/0000-00";
-    } else {
-      documentoLabel.textContent = "CPF";
-      documentoInput.placeholder = "000.000.000-00";
-    }
-
-    documentoInput.value = "";
-  }
-  atualizarCampoDocumento(tipoUsuarioSelecionado);
   try {
     const respostaCadastro = await fetch(
       "http://localhost:1337/api/auth/local/register",
@@ -137,7 +146,7 @@ formularioCadastro.addEventListener("submit", async function (event) {
         },
         body: JSON.stringify({
           nome_completo: nome,
-          cpf: cpf,
+          cpf: documento,
           telefone: telefone,
           endereco: endereco,
           tipo_usuario: tipoUsuarioSelecionado,
@@ -167,7 +176,6 @@ formularioCadastro.addEventListener("submit", async function (event) {
     );
   }
 });
-const botaoGoogle = document.getElementById("google-button");
 
 if (botaoGoogle) {
   botaoGoogle.addEventListener("click", function () {
