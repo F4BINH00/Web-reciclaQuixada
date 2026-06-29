@@ -95,10 +95,10 @@ async function carregarResumoDashboard() {
   const coletas = await buscarDados("solicitacao-de-coletas");
   const descartes = await buscarDados("descartes");
 
-   carregarMateriaisMaisDescartados(descartes);
+  carregarMateriaisMaisDescartados(descartes);
 
-   const impacto = calcularImpacto(descartes);
-  
+  const impacto = calcularImpacto(descartes);
+
   document.getElementById("total-pontos-coleta").textContent = pontos.length;
   document.getElementById("total-coletas").textContent = coletas.length;
   document.getElementById("total-descartes").textContent = descartes.length;
@@ -141,8 +141,7 @@ function realizarBuscaDashboard() {
     termo.includes("coleta") ||
     termo.includes("ecoponto")
   ) {
-    window.location.href =
-      `pontos-coleta.html?busca=${encodeURIComponent(termo)}`;
+    window.location.href = `pontos-coleta.html?busca=${encodeURIComponent(termo)}`;
     return;
   }
 
@@ -159,29 +158,21 @@ function realizarBuscaDashboard() {
     termo.includes("eletronico") ||
     termo.includes("isopor")
   ) {
-    window.location.href =
-      `educacao.html?busca=${encodeURIComponent(termo)}`;
+    window.location.href = `educacao.html?busca=${encodeURIComponent(termo)}`;
     return;
   }
 
-  window.location.href =
-    `educacao.html?busca=${encodeURIComponent(termo)}`;
+  window.location.href = `educacao.html?busca=${encodeURIComponent(termo)}`;
 }
 
 if (botaoBuscaDashboard && campoBuscaDashboard) {
-  botaoBuscaDashboard.addEventListener(
-    "click",
-    realizarBuscaDashboard
-  );
+  botaoBuscaDashboard.addEventListener("click", realizarBuscaDashboard);
 
-  campoBuscaDashboard.addEventListener(
-    "keydown",
-    function (event) {
-      if (event.key === "Enter") {
-        realizarBuscaDashboard();
-      }
+  campoBuscaDashboard.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      realizarBuscaDashboard();
     }
-  );
+  });
 }
 function formatarDataCompleta(dataTexto) {
   if (!dataTexto) {
@@ -254,9 +245,7 @@ async function carregarProximaColeta() {
     "Coleta solicitada";
 
   const horario =
-    primeiraColeta.horario ||
-    primeiraColeta.periodo ||
-    "Horário não informado";
+    primeiraColeta.horario || primeiraColeta.periodo || "Horário não informado";
 
   container.innerHTML = `
     <div class="collect-box">
@@ -273,11 +262,95 @@ async function carregarProximaColeta() {
     </div>
   `;
 }
-carregarUsuarioDashboard();
-carregarResumoDashboard();
-carregarProximaColeta();
-carregarUsuarioDashboard();
-carregarResumoDashboard();
+function formatarDia(dataTexto) {
+  if (!dataTexto) {
+    return "--";
+  }
+
+  const data = new Date(dataTexto);
+
+  return data.toLocaleDateString("pt-BR", {
+    day: "2-digit",
+  });
+}
+
+function formatarMes(dataTexto) {
+  if (!dataTexto) {
+    return "--";
+  }
+
+  const data = new Date(dataTexto);
+
+  return data.toLocaleDateString("pt-BR", {
+    month: "short",
+  });
+}
+
+function formatarDataCompleta(dataTexto) {
+  if (!dataTexto) {
+    return "Data não informada";
+  }
+
+  const data = new Date(dataTexto);
+
+  return data.toLocaleDateString("pt-BR", {
+    weekday: "long",
+    day: "2-digit",
+    month: "long",
+  });
+}
+
+async function carregarProximaColeta() {
+  const container = document.getElementById("proxima-coleta-dashboard");
+
+  if (!container) {
+    return;
+  }
+
+  const coletas = await buscarDados("solicitacao-de-coletas");
+
+  if (coletas.length === 0) {
+    container.innerHTML = `
+      <div class="empty-state compact">
+        <i class="bi bi-calendar-x"></i>
+        <h4>Nenhuma coleta agendada</h4>
+        <p>Quando houver uma solicitação registrada, ela aparecerá aqui.</p>
+      </div>
+    `;
+    return;
+  }
+
+  const primeiraColeta = coletas[0].attributes || coletas[0];
+
+  const dataColeta =
+    primeiraColeta.data_coleta ||
+    primeiraColeta.data ||
+    primeiraColeta.createdAt;
+
+  const tipoColeta =
+    primeiraColeta.tipo_residuo ||
+    primeiraColeta.material ||
+    "Coleta solicitada";
+
+  const horario =
+    primeiraColeta.horario || primeiraColeta.periodo || "Horário não informado";
+
+  container.innerHTML = `
+    <div class="collect-box">
+      <div class="date">
+        <strong>${formatarDia(dataColeta)}</strong>
+        <span>${formatarMes(dataColeta)}</span>
+      </div>
+
+      <div>
+        <h4>${tipoColeta}</h4>
+        <p>${formatarDataCompleta(dataColeta)}</p>
+        <p>${horario}</p>
+      </div>
+    </div>
+  `;
+}
+
 function carregarMateriaisMaisDescartados(descartes) {
   const container = document.getElementById("materiais-dashboard");
 
@@ -302,10 +375,7 @@ function carregarMateriaisMaisDescartados(descartes) {
     const item = descarte.attributes || descarte;
 
     const material =
-      item.material ||
-      item.tipo_residuo ||
-      item.nome ||
-      "Não informado";
+      item.material || item.tipo_residuo || item.nome || "Não informado";
 
     contagem[material] = (contagem[material] || 0) + 1;
   });
@@ -335,3 +405,64 @@ function carregarMateriaisMaisDescartados(descartes) {
     container.appendChild(div);
   });
 }
+
+function carregarMateriaisMaisDescartados(descartes) {
+  const container = document.getElementById("materiais-dashboard");
+
+  if (!container) {
+    return;
+  }
+
+  if (!descartes || descartes.length === 0) {
+    container.innerHTML = `
+      <div class="empty-state compact">
+        <i class="bi bi-bar-chart"></i>
+        <h4>Sem dados suficientes</h4>
+        <p>Os materiais mais descartados aparecerão quando houver registros.</p>
+      </div>
+    `;
+    return;
+  }
+
+  const contagem = {};
+
+  descartes.forEach(function (descarte) {
+    const item = descarte.attributes || descarte;
+
+    const material =
+      item.material || item.tipo_residuo || item.nome || "Não informado";
+
+    contagem[material] = (contagem[material] || 0) + 1;
+  });
+
+  const materiaisOrdenados = Object.entries(contagem).sort(function (a, b) {
+    return b[1] - a[1];
+  });
+
+  const total = descartes.length;
+
+  container.innerHTML = "";
+
+  materiaisOrdenados.slice(0, 4).forEach(function ([material, quantidade]) {
+    const porcentagem = Math.round((quantidade / total) * 100);
+
+    const div = document.createElement("div");
+    div.classList.add("material");
+
+    div.innerHTML = `
+      <span>${material}</span>
+      <div class="progress">
+        <div style="width: ${porcentagem}%;"></div>
+      </div>
+      <strong>${porcentagem}%</strong>
+    `;
+
+    container.appendChild(div);
+  });
+}
+
+carregarUsuarioDashboard();
+carregarResumoDashboard();
+carregarProximaColeta();
+carregarUsuarioDashboard();
+carregarResumoDashboard();

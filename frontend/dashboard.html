@@ -228,15 +228,13 @@
           <div class="panel">
             <h3>Próxima Coleta Agendada</h3>
 
-            <div class="collect-box">
-              <div class="date">
-                <strong>20</strong>
-                <span>Abr</span>
-              </div>
-              <div>
-                <h4>Coleta Seletiva</h4>
-                <p>Quinta-feira, 20 de abril</p>
-                <p>08:00 às 12:00</p>
+            <div id="proxima-coleta-dashboard">
+              <div class="empty-state compact">
+                <i class="bi bi-calendar-x"></i>
+                <h4>Nenhuma coleta agendada</h4>
+                <p>
+                  Quando houver uma solicitação registrada, ela aparecerá aqui.
+                </p>
               </div>
             </div>
           </div>
@@ -244,31 +242,18 @@
           <div class="panel">
             <div class="panel-header">
               <h3>Materiais mais descartados</h3>
-              <span>Este mês</span>
+              <span>Dados reais</span>
             </div>
 
-            <div class="material">
-              <span>Plástico</span>
-              <div class="progress"><div style="width: 45%"></div></div>
-              <strong>45%</strong>
-            </div>
-
-            <div class="material">
-              <span>Papel</span>
-              <div class="progress"><div style="width: 30%"></div></div>
-              <strong>30%</strong>
-            </div>
-
-            <div class="material">
-              <span>Vidro</span>
-              <div class="progress"><div style="width: 15%"></div></div>
-              <strong>15%</strong>
-            </div>
-
-            <div class="material">
-              <span>Metal</span>
-              <div class="progress"><div style="width: 10%"></div></div>
-              <strong>10%</strong>
+            <div id="materiais-dashboard">
+              <div class="empty-state compact">
+                <i class="bi bi-bar-chart"></i>
+                <h4>Sem dados suficientes</h4>
+                <p>
+                  Os materiais mais descartados aparecerão quando houver
+                  registros.
+                </p>
+              </div>
             </div>
           </div>
         </div>

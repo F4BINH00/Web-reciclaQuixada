@@ -143,3 +143,101 @@ mapa.on("locationerror", function () {
     "Não foi possível acessar sua localização. Verifique a permissão do navegador.",
   );
 });
+
+const tokenPontos = localStorage.getItem("token");
+
+const listaCatadoresProximos = document.getElementById(
+  "lista-catadores-proximos",
+);
+const statusCatadores = document.getElementById("status-catadores");
+
+async function carregarCatadoresProximos() {
+  if (!listaCatadoresProximos) {
+    return;
+  }
+
+  try {
+    const resposta = await fetch("http://localhost:1337/api/catadors", {
+      headers: {
+        Authorization: `Bearer ${tokenPontos}`,
+      },
+    });
+
+    if (!resposta.ok) {
+      throw new Error("Erro ao buscar catadores.");
+    }
+
+    const dados = await resposta.json();
+    const catadores = dados.data || [];
+
+    if (catadores.length === 0) {
+      if (statusCatadores) {
+        statusCatadores.textContent = "Sem registros";
+      }
+
+      listaCatadoresProximos.innerHTML = `
+        <div class="empty-state compact">
+          <i class="bi bi-people"></i>
+          <h4>Nenhum catador cadastrado</h4>
+          <p>Quando houver catadores cadastrados, eles aparecerão aqui.</p>
+        </div>
+      `;
+      return;
+    }
+
+    if (statusCatadores) {
+      statusCatadores.textContent =
+        catadores.length === 1 ? "1 cadastro" : `${catadores.length} cadastros`;
+    }
+
+    listaCatadoresProximos.innerHTML = "";
+
+    catadores.slice(0, 3).forEach(function (catador) {
+      const item = catador.attributes || catador;
+
+      const nome =
+        item.nome ||
+        item.nome_completo ||
+        item.username ||
+        "Catador cadastrado";
+
+      const bairro =
+        item.bairro || item.endereco || "Localização não informada";
+
+      const inicial = nome.charAt(0).toUpperCase();
+
+      const div = document.createElement("div");
+      div.classList.add("collector");
+
+      div.innerHTML = `
+        <div class="collector-avatar">${inicial}</div>
+
+        <div class="collector-info">
+          <h4>${nome}</h4>
+          <p>
+            <i class="bi bi-geo-alt"></i>
+            ${bairro}
+          </p>
+        </div>
+      `;
+
+      listaCatadoresProximos.appendChild(div);
+    });
+  } catch (erro) {
+    console.error("Erro ao carregar catadores:", erro);
+
+    if (statusCatadores) {
+      statusCatadores.textContent = "Indisponível";
+    }
+
+    listaCatadoresProximos.innerHTML = `
+      <div class="empty-state compact">
+        <i class="bi bi-exclamation-triangle"></i>
+        <h4>Não foi possível carregar os catadores</h4>
+        <p>Verifique se o Strapi está rodando e tente novamente.</p>
+      </div>
+    `;
+  }
+}
+
+carregarCatadoresProximos();

@@ -173,10 +173,14 @@
           <div class="panel request-info-card">
             <h3>Próximas Coletas</h3>
 
-            <div class="schedule">
-              <div class="schedule-item">20 Abr - Coleta Seletiva</div>
-              <div class="schedule-item">25 Abr - Papelão</div>
-              <div class="schedule-item">02 Mai - Eletrônicos</div>
+            <div class="schedule" id="proximas-coletas">
+              <div class="empty-state compact">
+                <i class="bi bi-calendar-x"></i>
+                <h4>Nenhuma coleta agendada</h4>
+                <p>
+                  As próximas coletas aparecerão aqui quando forem cadastradas.
+                </p>
+              </div>
             </div>
           </div>
         </aside>
@@ -234,5 +238,6 @@
       </footer>
     </main>
     <script src="js/solicita-coleta.js"></script>
+    <script src="js/topbar.js"></script>
   </body>
 </html>

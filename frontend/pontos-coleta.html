@@ -18,11 +18,11 @@
       </div>
 
       <nav class="menu">
-        <a href="dashboard.html" class="active">
+        <a href="dashboard.html">
           <i class="bi bi-house-door"></i>
           Início
         </a>
-        <a href="pontos-coleta.html">
+        <a href="pontos-coleta.html" class="active">
           <i class="bi bi-geo-alt"></i>
           Pontos de Coleta
         </a>
@@ -226,34 +226,15 @@
           <div class="panel">
             <div class="panel-header">
               <h3>Catadores próximos</h3>
-              <a href="#">Ver todos</a>
+              <span id="status-catadores">Buscando</span>
             </div>
 
-            <div class="collector">
-              <div class="collector-avatar">J</div>
-              <div>
-                <h4>João Batista</h4>
-                <p><i class="bi bi-geo-alt"></i> 2,1 km de distância</p>
+            <div id="lista-catadores-proximos" class="collectors-list">
+              <div class="empty-state compact">
+                <i class="bi bi-people"></i>
+                <h4>Buscando catadores</h4>
+                <p>Aguarde enquanto carregamos os dados disponíveis.</p>
               </div>
-              <span>4,8</span>
-            </div>
-
-            <div class="collector">
-              <div class="collector-avatar">M</div>
-              <div>
-                <h4>Maria do Carmo</h4>
-                <p><i class="bi bi-geo-alt"></i> 2,4 km de distância</p>
-              </div>
-              <span>4,9</span>
-            </div>
-
-            <div class="collector">
-              <div class="collector-avatar">C</div>
-              <div>
-                <h4>Cooperativa Esperança</h4>
-                <p><i class="bi bi-geo-alt"></i> 3,1 km de distância</p>
-              </div>
-              <span>4,7</span>
             </div>
           </div>
         </aside>
