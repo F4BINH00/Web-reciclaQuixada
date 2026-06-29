@@ -93,27 +93,54 @@ O sistema será composto pelas seguintes entidades:
 
 **Frontend:**
 
-Lista as tecnologias, frameworks e bibliotecas utilizados.
+* HTML5
+* CSS3
+* JavaScript
+* Bootstrap Icons
+* Leaflet.js
+* OpenStreetMap
 
 **Backend:**
 
-Lista as tecnologias, frameworks e bibliotecas utilizados.
-
+* Strapi
+* Node.js
+* API REST
+* SQLite
 
 ## :shipit: Operações implementadas para cada entidade da aplicação
 
+| Entidade              | Criação | Leitura | Atualização | Remoção |
+| --------------------- | ------- | ------- | ----------- | ------- |
+| Usuário               | X       | X       | X           |         |
+| Catador               | X       | X       |             |         |
+| Ponto de Coleta       | X       | X       |             |         |
+| Resíduo               | X       | X       |             |         |
+| Solicitação de Coleta | X       | X       |             |         |
+| Descarte              | X       | X       |             |         |
 
-| Entidade| Criação | Leitura | Atualização | Remoção |
-| --- | --- | --- | --- | --- |
-| Entidade 1 | X |  X  |  | X |
-| Entidade 2 | X |    |  X | X |
-| Entidade 3 | X |    |  |  |
-
-> Lembre-se que é necessário implementar o CRUD de pelo menos duas entidades.
+> O CRUD mínimo exigido foi contemplado principalmente nas entidades Usuário e Solicitação de Coleta/Descarte. Algumas funcionalidades administrativas e integrações com dados reais de cooperativas/catadores ainda estão em processo de complementação, pois a equipe aguarda retorno institucional e reunião com representantes da área.
 
 ## :neckbeard: Rotas da API REST utilizadas
 
-| Método HTTP | URL |
-| --- | --- |
-| GET | api/entidade1/|
-| POST | api/entidade2 |
+| Método HTTP | URL                           |
+| ----------- | ----------------------------- |
+| POST        | `/api/auth/local/register`    |
+| POST        | `/api/auth/local`             |
+| GET         | `/api/users/me`               |
+| PUT         | `/api/users/:id`              |
+| GET         | `/api/catadors`               |
+| GET         | `/api/ponto-de-coletas`       |
+| GET         | `/api/residuos`               |
+| GET         | `/api/solicitacao-de-coletas` |
+| POST        | `/api/solicitacao-de-coletas` |
+| GET         | `/api/descartes`              |
+| POST        | `/api/descartes`              |
+
+## :pushpin: Observação sobre dados externos
+
+Durante o desenvolvimento, a equipe tentou contato com cooperativas, catadores e órgãos responsáveis pela gestão de resíduos em Quixadá para obter dados reais sobre pontos de coleta, materiais aceitos, regiões atendidas e funcionamento das coletas.
+
+No entanto, até a data de entrega do projeto, parte dessas informações ainda não havia sido recebida. Uma reunião foi marcada para terça-feira (30 de junho), às 9h, via Google Meet, com o objetivo de complementar os dados da aplicação e melhorar a aderência do sistema à realidade local.
+
+Por esse motivo, algumas informações utilizadas na versão atual da aplicação são estruturais ou demonstrativas, enquanto a integração com dados reais será refinada após o retorno dos representantes contatados.
+
