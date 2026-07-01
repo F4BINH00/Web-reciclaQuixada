@@ -36,7 +36,7 @@ async function buscarUsuarioLogado() {
 }
 
 async function buscarDescartesDoUsuario(usuarioId) {
-  const resposta = await fetch(
+  let resposta = await fetch(
     `http://localhost:1337/api/descartes?filters[usuario][id][$eq]=${usuarioId}&sort=createdAt:desc`,
     {
       headers: {
@@ -47,7 +47,22 @@ async function buscarDescartesDoUsuario(usuarioId) {
 
   if (!resposta.ok) {
     console.warn(
-      "Não foi possível buscar descartes. Verifique permissões ou relação no Strapi.",
+      "Filtro por usuário não funcionou. Buscando descartes sem filtro.",
+    );
+
+    resposta = await fetch(
+      "http://localhost:1337/api/descartes?sort=createdAt:desc",
+      {
+        headers: {
+          Authorization: `Bearer ${tokenDescartes}`,
+        },
+      },
+    );
+  }
+
+  if (!resposta.ok) {
+    console.warn(
+      "Não foi possível buscar descartes. Verifique permissões no Strapi.",
     );
     return [];
   }
@@ -103,7 +118,10 @@ function renderizarEstadoVazio() {
     <div class="empty-state">
       <i class="bi bi-recycle"></i>
       <h4>Nenhum descarte registrado ainda</h4>
-      <p>Quando você registrar descartes, seu histórico aparecerá aqui.</p>
+      <p>
+      As solicitações de coleta são acompanhadas na tela de Solicitar Coleta.
+      Quando um descarte for registrado, ele aparecerá neste histórico.
+      </p>
       <a href="solicita-coleta.html" class="btn-primary">
         <i class="bi bi-truck"></i>
         Solicitar coleta

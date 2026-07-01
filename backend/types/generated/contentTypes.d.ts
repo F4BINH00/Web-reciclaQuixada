@@ -674,7 +674,8 @@ export interface ApiSolicitacaoDeColetaSolicitacaoDeColeta
     quantidade: Schema.Attribute.Enumeration<['pequena', 'media', 'grande']>;
     situacao: Schema.Attribute.Enumeration<
       ['pendente', 'aceita', 'concluida', 'cancelada']
-    >;
+    > &
+      Schema.Attribute.DefaultTo<'pendente'>;
     tipo_material: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

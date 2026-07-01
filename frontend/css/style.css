@@ -1098,6 +1098,51 @@ body {
 }
 
 /* Solicitação de coleta e catadores próximos */
+.solicitacao-card {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: 16px;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+}
+
+.solicitacao-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.solicitacao-card-header h4 {
+  color: #064e3b;
+  margin: 0;
+}
+
+.status-badge {
+  background-color: #ecfdf5;
+  color: #16823a;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.btn-danger {
+  border: none;
+  background-color: #dc2626;
+  color: #ffffff;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-danger:hover {
+  background-color: #b91c1c;
+}
 .request-card {
   background: linear-gradient(90deg, #eaf7ed, #dff5e6);
   border: 1px solid #ccefd4;

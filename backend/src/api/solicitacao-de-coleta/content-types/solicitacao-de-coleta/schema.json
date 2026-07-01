@@ -39,6 +39,7 @@
     },
     "situacao": {
       "type": "enumeration",
+      "default": "pendente",
       "enum": [
         "pendente",
         "aceita",

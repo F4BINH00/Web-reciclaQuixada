@@ -18,24 +18,34 @@ if (notificacoesAtivas === null) {
 function atualizarEstadoNotificacoes() {
   const ativas = localStorage.getItem("notificacoesAtivas") === "true";
 
-  if (ativas) {
-    statusNotificacao.textContent = "Ativas";
-    statusNotificacao.classList.remove("disabled");
-    bolinhaNotificacao.classList.remove("disabled");
+  if (statusNotificacao) {
+    statusNotificacao.textContent = ativas ? "Ativas" : "Desativadas";
 
-    botaoAlternarNotificacao.innerHTML = `
-      <i class="bi bi-bell-slash"></i>
-      Desativar notificações
-    `;
-  } else {
-    statusNotificacao.textContent = "Desativadas";
-    statusNotificacao.classList.add("disabled");
-    bolinhaNotificacao.classList.add("disabled");
+    if (ativas) {
+      statusNotificacao.classList.remove("disabled");
+    } else {
+      statusNotificacao.classList.add("disabled");
+    }
+  }
 
-    botaoAlternarNotificacao.innerHTML = `
-      <i class="bi bi-bell"></i>
-      Ativar notificações
-    `;
+  if (bolinhaNotificacao) {
+    if (ativas) {
+      bolinhaNotificacao.classList.remove("disabled");
+    } else {
+      bolinhaNotificacao.classList.add("disabled");
+    }
+  }
+
+  if (botaoAlternarNotificacao) {
+    botaoAlternarNotificacao.innerHTML = ativas
+      ? `
+        <i class="bi bi-bell-slash"></i>
+        Desativar notificações
+      `
+      : `
+        <i class="bi bi-bell"></i>
+        Ativar notificações
+      `;
   }
 }
 
@@ -116,7 +126,8 @@ async function carregarSaudacaoTopbar() {
     });
 
     const usuario = await resposta.json();
-
+    localStorage.setItem("usuario", JSON.stringify(usuario));
+    aplicarPermissoesUsuario(usuario.tipo_usuario);
     if (!resposta.ok) {
       return;
     }
@@ -130,6 +141,25 @@ async function carregarSaudacaoTopbar() {
   } catch (erro) {
     console.error("Erro ao carregar saudação:", erro);
   }
+}
+function aplicarPermissoesUsuario(tipoUsuario) {
+  const linksCatador = document.querySelectorAll(".role-catador");
+  const linksComercioEscola = document.querySelectorAll(
+    ".role-comercio-escola",
+  );
+  const linksCidadao = document.querySelectorAll(".role-cidadao");
+
+  linksCatador.forEach(function (item) {
+    item.style.display = tipoUsuario === "catador" ? "flex" : "none";
+  });
+
+  linksComercioEscola.forEach(function (item) {
+    item.style.display = tipoUsuario === "comercio_escola" ? "flex" : "none";
+  });
+
+  linksCidadao.forEach(function (item) {
+    item.style.display = tipoUsuario === "cidadao" ? "flex" : "none";
+  });
 }
 
 carregarSaudacaoTopbar();
