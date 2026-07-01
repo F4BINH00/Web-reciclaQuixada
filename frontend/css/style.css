@@ -818,7 +818,14 @@ body {
   background: #16823a;
   color: white;
 }
+.collector {
+  cursor: pointer;
+}
 
+.collector:hover {
+  background-color: #f0fdf4;
+  border-radius: 14px;
+}
 /* Marcadores e localização do mapa */
 .street {
   position: absolute;

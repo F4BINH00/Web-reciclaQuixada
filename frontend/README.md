@@ -1,18 +1,33 @@
 # Frontend
 
-Aqui devem ficar os arquivos HTML, CSS e Javascript ou Typescript
+Aqui ficam os arquivos HTML, CSS, JavaScript e imagens utilizados na interface da aplicação.
 
 > [!IMPORTANT]
-> Separar os arquivos em pastas é uma boa prática. 
+> Os arquivos foram organizados separando estilos, scripts e imagens em pastas próprias.
 
- ``` 
+```txt
 ├── css
-│   ├── dialog.css
-│   └── layout.css
+│   └── style.css
 ├── js
-│   ├── pagina1.js
-│   └── pagina2.js
-└── paginas
-    ├── pagina1.html
-    └── pagina2.html
- ```
+│   ├── cadastro.js
+│   ├── dashboard.js
+│   ├── educacao.js
+│   ├── login.js
+│   ├── meus-descartes.js
+│   ├── perfil.js
+│   ├── pontos-coleta.js
+│   ├── solicita-coleta.js
+│   └── topbar.js
+├── img
+│   └── logoreciclaqxd.png
+├── cadastro.html
+├── dashboard.html
+├── educacao.html
+├── login.html
+├── meus-descartes.html
+├── perfil.html
+├── pontos-coleta.html
+├── privacidade.html
+├── solicita-coleta.html
+└── termos.html
+```

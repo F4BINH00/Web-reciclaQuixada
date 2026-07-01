@@ -31,6 +31,29 @@
     },
     "avaliacao": {
       "type": "decimal"
+    },
+    "documento": {
+      "type": "string"
+    },
+    "tipo_documento": {
+      "type": "enumeration",
+      "enum": [
+        "CPF",
+        "CNPJ",
+        "Não informado"
+      ]
+    },
+    "email": {
+      "type": "string"
+    },
+    "endereco": {
+      "type": "string"
+    },
+    "observacao": {
+      "type": "text"
+    },
+    "tipo": {
+      "type": "string"
     }
   }
 }

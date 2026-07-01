@@ -487,6 +487,9 @@ export interface ApiCatadorCatador extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     disponivel: Schema.Attribute.Boolean;
+    documento: Schema.Attribute.String;
+    email: Schema.Attribute.String;
+    endereco: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -495,8 +498,13 @@ export interface ApiCatadorCatador extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     materiais_coletados: Schema.Attribute.Text;
     nome: Schema.Attribute.String;
+    observacao: Schema.Attribute.Text;
     publishedAt: Schema.Attribute.DateTime;
     telefone: Schema.Attribute.String;
+    tipo: Schema.Attribute.String;
+    tipo_documento: Schema.Attribute.Enumeration<
+      ['CPF', 'CNPJ', 'N\u00E3o informado']
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
